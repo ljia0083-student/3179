@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of injury crashes reported in each month, 2012 to the latest full year.",
+  "width": "container",
+  "height": {"step": 22},
+  "data": {"url": "data/monthly_crashes.csv"},
+  "transform": [
+    {"calculate": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.month - 1]", "as": "month_name"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "month_name",
+      "type": "ordinal",
+      "sort": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+      "title": null,
+      "axis": {"orient": "top", "labelAngle": 0, "ticks": false, "domain": false, "labelPadding": 6}
+    },
+    "y": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"ticks": false, "domain": false, "labelPadding": 6}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#F6F6F4", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "crashes",
+          "type": "quantitative",
+          "title": "Injury crashes in the month",
+          "scale": {"range": ["#F1F3F5", "#B7C2CC", "#6E8193", "#2A3B4C"], "domain": [600, 900, 1200, 1500], "clamp": true},
+          "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 220, "titleOrient": "left", "titleAnchor": "start", "titleLimit": 220}
+        },
+        "tooltip": [
+          {"field": "month_name", "title": "Month"},
+          {"field": "year", "title": "Year"},
+          {"field": "crashes", "title": "Injury crashes", "format": ","}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "(datum.year == 2020 && (datum.month == 4 || datum.month == 8)) || (datum.year == 2021 && datum.month == 9)"}
+      ],
+      "mark": {"type": "text", "fontSize": 10.5, "fontWeight": 700, "color": "#8E1B2E"},
+      "encoding": {"text": {"value": "lockdown"}}
+    }
+  ]
+}

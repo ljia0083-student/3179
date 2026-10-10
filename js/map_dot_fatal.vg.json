@@ -1,0 +1,186 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dot map. One dot for every fatal crash in the five most recent full years, placed where it happened and coloured by the posted speed limit. Click the legend to isolate one speed band.",
+  "width": 500,
+  "height": 330,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -36,
+      -38
+    ],
+    "rotate": [
+      -145,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/vic_lga.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "lga"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E6E8E4",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/fatal_crashes.csv"
+      },
+      "layer": [
+        {
+          "params": [
+            {
+              "name": "speed_pick",
+              "select": {
+                "type": "point",
+                "fields": [
+                  "speed_group"
+                ]
+              },
+              "bind": "legend"
+            }
+          ],
+          "mark": {
+            "type": "circle",
+            "size": 16,
+            "stroke": "#FFFFFF",
+            "strokeWidth": 0.4
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "speed_group",
+              "type": "ordinal",
+              "title": "Speed limit",
+              "scale": {
+                "domain": [
+                  "50 km/h or less",
+                  "60 km/h",
+                  "70 to 90 km/h",
+                  "100 to 110 km/h"
+                ],
+                "range": [
+                  "#C9B8E0",
+                  "#9B7FC6",
+                  "#6A45A6",
+                  "#2E1365"
+                ]
+              },
+              "legend": {
+                "orient": "top-right",
+                "symbolType": "circle",
+                "symbolSize": 90
+              }
+            },
+            "opacity": {
+              "condition": {
+                "param": "speed_pick",
+                "value": 0.9
+              },
+              "value": 0.06
+            },
+            "order": {
+              "field": "speed_group",
+              "sort": "ascending"
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "title": "Year"
+              },
+              {
+                "field": "speed_group",
+                "title": "Speed limit"
+              },
+              {
+                "field": "region",
+                "title": "Area"
+              }
+            ]
+          },
+          "transform": [
+            {
+              "filter": "datum.speed_group != 'Not recorded'"
+            }
+          ]
+        },
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {
+                  "op": "count",
+                  "as": "n"
+                }
+              ],
+              "groupby": [
+                "speed_group"
+              ]
+            },
+            {
+              "joinaggregate": [
+                {
+                  "op": "sum",
+                  "field": "n",
+                  "as": "total"
+                }
+              ]
+            },
+            {
+              "filter": "datum.speed_group == '100 to 110 km/h'"
+            },
+            {
+              "calculate": "[format(datum.n / datum.total, '.0%') + ' of fatal crashes were on', 'roads signed 100 or 110 km/h']",
+              "as": "label"
+            },
+            {
+              "calculate": "141.1",
+              "as": "lon"
+            },
+            {
+              "calculate": "-38.75",
+              "as": "lat"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "top",
+            "fontSize": 12,
+            "fontWeight": 700,
+            "color": "#2E1365",
+            "lineHeight": 15
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

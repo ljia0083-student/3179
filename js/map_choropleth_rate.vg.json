@@ -1,0 +1,579 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map. Fatal and serious-injury crashes per 100,000 residents per year (five most recent full years), by local government area. Crash counts come from the DataVic crash data; resident population comes from the ABS. Left: all of Victoria, with leader lines labelling the three highest-rate councils. Right: the 31 councils of Metropolitan Melbourne, enlarged.",
+  "data": {
+    "url": "data/vic_lga.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "lga"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.lgaCode",
+      "from": {
+        "data": {
+          "url": "data/lga_crashes.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "lgaCode": "string"
+            }
+          }
+        },
+        "key": "lgaCode",
+        "fields": [
+          "ksi_crashes",
+          "fatal_crashes",
+          "crashes"
+        ]
+      }
+    },
+    {
+      "lookup": "properties.lgaCode",
+      "from": {
+        "data": {
+          "url": "data/lga_population.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "lgaCode": "string"
+            }
+          }
+        },
+        "key": "lgaCode",
+        "fields": [
+          "population_2021",
+          "metro"
+        ]
+      }
+    },
+    {
+      "calculate": "isValid(datum.population_2021) ? datum.ksi_crashes / 5 / datum.population_2021 * 100000 : null",
+      "as": "rate"
+    },
+    {
+      "calculate": "replace(datum.properties.lgaName, ' (Vic.)', '')",
+      "as": "council"
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "color": "shared"
+    },
+    "legend": {
+      "color": "shared"
+    }
+  },
+  "spacing": 24,
+  "hconcat": [
+    {
+      "width": 560,
+      "height": 360,
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -36,
+          -38
+        ],
+        "rotate": [
+          -145,
+          0
+        ]
+      },
+      "layer": [
+        {
+          "params": [
+            {
+              "name": "hover_state",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "clear": "pointerout",
+                "fields": [
+                  "properties.lgaCode"
+                ]
+              }
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "stroke": "#FFFFFF",
+            "strokeWidth": 0.6
+          },
+          "encoding": {
+            "color": {
+              "field": "rate",
+              "type": "quantitative",
+              "title": "Fatal and serious-injury crashes per 100,000 residents a year",
+              "scale": {
+                "type": "threshold",
+                "domain": [
+                  50,
+                  75,
+                  100,
+                  150,
+                  200
+                ],
+                "range": [
+                  "#FBE6DA",
+                  "#F5BFA4",
+                  "#EC8F6C",
+                  "#D85D40",
+                  "#AF2F27",
+                  "#741320"
+                ]
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "horizontal",
+                "titleLimit": 420,
+                "titleOrient": "top",
+                "labelFontSize": 11,
+                "symbolType": "square",
+                "symbolSize": 160,
+                "columns": 6
+              }
+            },
+            "strokeWidth": {
+              "condition": {
+                "param": "hover_state",
+                "empty": false,
+                "value": 2.2
+              },
+              "value": 0.6
+            },
+            "stroke": {
+              "condition": {
+                "param": "hover_state",
+                "empty": false,
+                "value": "#1E2328"
+              },
+              "value": "#FFFFFF"
+            },
+            "tooltip": [
+              {
+                "field": "council",
+                "title": "Council"
+              },
+              {
+                "field": "rate",
+                "title": "Per 100,000 residents a year",
+                "format": ".0f"
+              },
+              {
+                "field": "ksi_crashes",
+                "title": "Fatal + serious crashes (5 yrs)",
+                "format": ","
+              },
+              {
+                "field": "population_2021",
+                "title": "Residents (2021)",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "council": "Strathbogie",
+                "lx": 144.75,
+                "ly": -35.2
+              },
+              {
+                "council": "Murrindindi",
+                "lx": 146.85,
+                "ly": -35.2
+              },
+              {
+                "council": "Towong",
+                "lx": 148.95,
+                "ly": -35.55
+              }
+            ]
+          },
+          "transform": [
+            {
+              "lookup": "council",
+              "from": {
+                "data": {
+                  "url": "data/lga_crashes.csv",
+                  "format": {
+                    "type": "csv",
+                    "parse": {
+                      "lgaCode": "string"
+                    }
+                  }
+                },
+                "key": "lgaName",
+                "fields": [
+                  "lgaCode",
+                  "lon",
+                  "lat",
+                  "ksi_crashes"
+                ]
+              }
+            },
+            {
+              "lookup": "lgaCode",
+              "from": {
+                "data": {
+                  "url": "data/lga_population.csv",
+                  "format": {
+                    "type": "csv",
+                    "parse": {
+                      "lgaCode": "string"
+                    }
+                  }
+                },
+                "key": "lgaCode",
+                "fields": [
+                  "population_2021"
+                ]
+              }
+            },
+            {
+              "calculate": "datum.ksi_crashes / 5 / datum.population_2021 * 100000",
+              "as": "rate"
+            },
+            {
+              "calculate": "[datum.council, format(datum.rate, '.0f') + ' per 100,000']",
+              "as": "label"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {
+                "type": "rule",
+                "color": "#1E2328",
+                "strokeWidth": 1
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "longitude2": {
+                  "field": "lx"
+                },
+                "latitude2": {
+                  "field": "ly"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "circle",
+                "color": "#1E2328",
+                "size": 22,
+                "opacity": 1
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -20,
+                "fontSize": 12,
+                "fontWeight": 700,
+                "lineHeight": 15,
+                "color": "#1E2328"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lx",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "ly",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "lon": 144.97,
+                "lat": -37.86,
+                "lx": 144.35,
+                "ly": -38.95,
+                "label": "Greater Melbourne, enlarged at right"
+              }
+            ]
+          },
+          "layer": [
+            {
+              "mark": {
+                "type": "rule",
+                "color": "#1E2328",
+                "strokeWidth": 1,
+                "strokeDash": [
+                  3,
+                  2
+                ]
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "longitude2": {
+                  "field": "lx"
+                },
+                "latitude2": {
+                  "field": "ly"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "top",
+                "dy": 4,
+                "fontSize": 12,
+                "fontWeight": 600,
+                "color": "#4A525A"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lx",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "ly",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 380,
+      "height": 360,
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -36,
+          -38
+        ],
+        "rotate": [
+          -145,
+          0
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.metro == 1"
+        }
+      ],
+      "layer": [
+        {
+          "params": [
+            {
+              "name": "hover_metro",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "clear": "pointerout",
+                "fields": [
+                  "properties.lgaCode"
+                ]
+              }
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "stroke": "#FFFFFF",
+            "strokeWidth": 0.8
+          },
+          "encoding": {
+            "color": {
+              "field": "rate",
+              "type": "quantitative",
+              "title": "Fatal and serious-injury crashes per 100,000 residents a year",
+              "scale": {
+                "type": "threshold",
+                "domain": [
+                  50,
+                  75,
+                  100,
+                  150,
+                  200
+                ],
+                "range": [
+                  "#FBE6DA",
+                  "#F5BFA4",
+                  "#EC8F6C",
+                  "#D85D40",
+                  "#AF2F27",
+                  "#741320"
+                ]
+              },
+              "legend": null
+            },
+            "strokeWidth": {
+              "condition": {
+                "param": "hover_metro",
+                "empty": false,
+                "value": 2.2
+              },
+              "value": 0.8
+            },
+            "stroke": {
+              "condition": {
+                "param": "hover_metro",
+                "empty": false,
+                "value": "#1E2328"
+              },
+              "value": "#FFFFFF"
+            },
+            "tooltip": [
+              {
+                "field": "council",
+                "title": "Council"
+              },
+              {
+                "field": "rate",
+                "title": "Per 100,000 residents a year",
+                "format": ".0f"
+              },
+              {
+                "field": "ksi_crashes",
+                "title": "Fatal + serious crashes (5 yrs)",
+                "format": ","
+              },
+              {
+                "field": "population_2021",
+                "title": "Residents (2021)",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "url": "data/lga_crashes.csv",
+            "format": {
+              "type": "csv",
+              "parse": {
+                "lgaCode": "string"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.lgaName == 'Melbourne' || datum.lgaName == 'Greater Dandenong' || datum.lgaName == 'Manningham'"
+            },
+            {
+              "lookup": "lgaCode",
+              "from": {
+                "data": {
+                  "url": "data/lga_population.csv",
+                  "format": {
+                    "type": "csv",
+                    "parse": {
+                      "lgaCode": "string"
+                    }
+                  }
+                },
+                "key": "lgaCode",
+                "fields": [
+                  "population_2021"
+                ]
+              }
+            },
+            {
+              "calculate": "datum.ksi_crashes / 5 / datum.population_2021 * 100000",
+              "as": "rate"
+            },
+            {
+              "calculate": "datum.lgaName + ' ' + format(datum.rate, '.0f')",
+              "as": "label"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {
+                "type": "text",
+                "fontSize": 11.5,
+                "fontWeight": 700,
+                "color": "#1E2328",
+                "stroke": "#FFFFFF",
+                "strokeWidth": 3,
+                "strokeOpacity": 0.8,
+                "dy": -2
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "fontSize": 11.5,
+                "fontWeight": 700,
+                "color": "#1E2328",
+                "dy": -2
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

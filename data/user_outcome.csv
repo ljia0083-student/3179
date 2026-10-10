@@ -1,0 +1,21 @@
+road_user,outcome,people
+Cyclist,Killed,56
+Cyclist,Not injured,165
+Cyclist,Other injury,4525
+Cyclist,Seriously injured,2137
+Driver,Killed,582
+Driver,Not injured,54790
+Driver,Other injury,37614
+Driver,Seriously injured,13625
+Motorcyclist,Killed,242
+Motorcyclist,Not injured,356
+Motorcyclist,Other injury,5275
+Motorcyclist,Seriously injured,4532
+Passenger,Killed,179
+Passenger,Not injured,15121
+Passenger,Other injury,10922
+Passenger,Seriously injured,4020
+Pedestrian,Killed,193
+Pedestrian,Not injured,247
+Pedestrian,Other injury,3329
+Pedestrian,Seriously injured,2387
