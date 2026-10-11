@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Heatmap of crashes by day of week and hour of day for the five most recent full years. A drop-down switches between all injury crashes, fatal or serious crashes, and fatal crashes only.",
+  "description": "Heatmap of crashes by day of week and hour of day for the five most recent full years. A drop-down switches between all injury crashes, fatal or serious crashes, and fatal crashes only. The morning and evening peaks are labelled in the all-crashes view.",
   "width": "container",
   "height": {
     "step": 30
@@ -96,7 +96,7 @@
         "color": {
           "field": "n",
           "type": "quantitative",
-          "title": "Crashes, 2020\u20132024",
+          "title": "Crashes, 2020–2024",
           "scale": {
             "range": [
               "#F1F3F5",
@@ -138,25 +138,13 @@
             "mode": "All injury crashes",
             "day": "Thursday",
             "hour": 8,
-            "text": "School run"
+            "text": "Morning peak"
           },
           {
             "mode": "All injury crashes",
             "day": "Wednesday",
             "hour": 16,
             "text": "Evening peak"
-          },
-          {
-            "mode": "Fatal crashes only",
-            "day": "Saturday",
-            "hour": 2,
-            "text": "Weekend nights"
-          },
-          {
-            "mode": "Fatal crashes only",
-            "day": "Sunday",
-            "hour": 16,
-            "text": "Sunday afternoons"
           }
         ]
       },
@@ -188,25 +176,13 @@
             "mode": "All injury crashes",
             "day": "Thursday",
             "hour": 8,
-            "text": "School run"
+            "text": "Morning peak"
           },
           {
             "mode": "All injury crashes",
             "day": "Wednesday",
             "hour": 16,
             "text": "Evening peak"
-          },
-          {
-            "mode": "Fatal crashes only",
-            "day": "Saturday",
-            "hour": 2,
-            "text": "Weekend nights"
-          },
-          {
-            "mode": "Fatal crashes only",
-            "day": "Sunday",
-            "hour": 16,
-            "text": "Sunday afternoons"
           }
         ]
       },
