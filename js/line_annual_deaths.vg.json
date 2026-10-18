@@ -1,0 +1,183 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "People killed each year, split by where the crash happened (Metropolitan Melbourne vs Regional Victoria).",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "data/annual_region.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "labelExpr": "datum.value % 2 == 0 ? datum.value : ''",
+        "ticks": false,
+        "domain": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "color": "#E9ECE8"
+      },
+      "transform": [
+        {
+          "filter": "datum.year == 2020 && datum.region == 'Regional Victoria'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "point": {
+          "filled": true,
+          "size": 40
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "killed",
+          "type": "quantitative",
+          "title": "People killed",
+          "scale": {
+            "domain": [
+              0,
+              200
+            ]
+          },
+          "axis": {
+            "tickCount": 5,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Metropolitan Melbourne",
+              "Regional Victoria"
+            ],
+            "range": [
+              "#2F62A8",
+              "#4E8A3A"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "region",
+            "title": "Area"
+          },
+          {
+            "field": "killed",
+            "title": "People killed"
+          },
+          {
+            "field": "seriously_injured",
+            "title": "Seriously injured",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2024"
+        },
+        {
+          "calculate": "datum.region == 'Metropolitan Melbourne' ? 'Melbourne' : 'Regional'",
+          "as": "short"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 13,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "y": {
+          "field": "killed",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "short"
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": "2020",
+            "y": 28,
+            "text": "2020: COVID-19 lockdowns."
+          },
+          {
+            "year": "2020",
+            "y": 16,
+            "text": "Fewest deaths in Melbourne"
+          },
+          {
+            "year": "2023",
+            "y": 196,
+            "text": "2023: 173 deaths in the regions,"
+          },
+          {
+            "year": "2023",
+            "y": 184,
+            "text": "the most since 2012"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "color": "#4A525A",
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
+  "padding": {
+    "right": 4
+  }
+}
