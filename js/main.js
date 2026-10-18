@@ -35,14 +35,11 @@ const options = { actions: false, renderer: "svg", config: theme };
 const charts = [
   ["#vis-unit", "js/unit_people_killed.vg.json"],
   ["#vis-annual", "js/line_annual_deaths.vg.json"],
-  ["#vis-monthly", "js/heatmap_monthly.vg.json"],
-  ["#vis-users", "js/small_multiples_road_user.vg.json"],
   ["#vis-outcome", "js/marimekko_outcome.vg.json"],
-  ["#vis-dayhour", "js/heatmap_day_hour.vg.json"],
-  ["#vis-radial", "js/radial_fatal_by_hour.vg.json"],
-  ["#vis-ridgeline", "js/ridgeline_user_hour.vg.json"],
-  ["#vis-choropleth", "js/map_choropleth_rate.vg.json"],
-  ["#vis-symbol", "js/map_symbol_counts.vg.json"],
+  ["#vis-choro-state", "js/map_choropleth_state.vg.json"],
+  ["#vis-choro-melb", "js/map_choropleth_melbourne.vg.json"],
+  ["#vis-symbol-state", "js/map_symbol_state.vg.json"],
+  ["#vis-symbol-melb", "js/map_symbol_melbourne.vg.json"],
   ["#vis-dots", "js/map_dot_fatal.vg.json"],
   ["#vis-speed", "js/bar_speed_fatal.vg.json"]
 ];

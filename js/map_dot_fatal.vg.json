@@ -1,8 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Dot map. One dot for every fatal crash in the five most recent full years, placed where it happened and coloured by the posted speed limit. Click the legend to isolate one speed band.",
-  "width": 500,
-  "height": 330,
+  "description": "Dot map. One dot for every fatal crash in the five most recent full years, placed where it happened and coloured by the posted speed limit (light orange = 50 km/h or less, dark red = 100 to 110 km/h). Click the legend to isolate one speed band.",
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "height": 385,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -50,9 +54,9 @@
           ],
           "mark": {
             "type": "circle",
-            "size": 16,
-            "stroke": "#FFFFFF",
-            "strokeWidth": 0.4
+            "size": 24,
+            "stroke": "#F6F6F4",
+            "strokeWidth": 0.5
           },
           "encoding": {
             "longitude": {
@@ -75,10 +79,10 @@
                   "100 to 110 km/h"
                 ],
                 "range": [
-                  "#C9B8E0",
-                  "#9B7FC6",
-                  "#6A45A6",
-                  "#2E1365"
+                  "#EB883B",
+                  "#D7530B",
+                  "#B71C0E",
+                  "#551016"
                 ]
               },
               "legend": {
@@ -90,12 +94,13 @@
             "opacity": {
               "condition": {
                 "param": "speed_pick",
-                "value": 0.9
+                "value": 0.95
               },
               "value": 0.06
             },
             "order": {
-              "field": "speed_group",
+              "field": "speed_rank",
+              "type": "quantitative",
               "sort": "ascending"
             },
             "tooltip": [
@@ -116,6 +121,10 @@
           "transform": [
             {
               "filter": "datum.speed_group != 'Not recorded'"
+            },
+            {
+              "calculate": "indexof(['50 km/h or less', '60 km/h', '70 to 90 km/h', '100 to 110 km/h'], datum.speed_group)",
+              "as": "speed_rank"
             }
           ]
         },
@@ -163,7 +172,7 @@
             "baseline": "top",
             "fontSize": 12,
             "fontWeight": 700,
-            "color": "#2E1365",
+            "color": "#551016",
             "lineHeight": 15
           },
           "encoding": {

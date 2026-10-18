@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Behind Victoria's road toll | Road crashes in Victoria, 2012–2024</title>
-  <meta name="description" content="Who is hurt on Victoria's roads, when crashes happen and where the risk is highest. A data visualisation of DataVic road crash data, 2012–2024.">
+  <meta name="description" content="Who is hurt on Victoria's roads, where the risk is highest and how much speed matters. A data visualisation of DataVic road crash data, 2012–2024.">
   <meta name="author" content="Jiayi Li">
 
   <!-- Vega, Vega-Lite and Vega-Embed -->
@@ -26,8 +26,15 @@
 
     <!-- ===================================================== HERO -->
     <header class="hero">
-      <h1>Behind Victoria’s road toll</h1>
-      <p class="dek">Who is hurt on our roads, when crashes happen, and where the risk is highest, 2012–2024</p>
+      <div class="grid hero-top">
+        <div class="span-7 hero-title">
+          <h1>Behind Victoria’s road toll</h1>
+          <p class="dek">Who is hurt on our roads, where the risk is highest, and how much speed matters, 2012–2024</p>
+        </div>
+        <div class="span-5 hero-art">
+          <img src="img/header-road.svg" width="480" height="300" alt="Illustration of a two-lane country road winding past dry paddocks and gum trees, with guide posts and a yellow curve-warning sign.">
+        </div>
+      </div>
 
       <div class="grid hero-grid">
         <div class="span-4 lede">
@@ -57,24 +64,6 @@
           <figcaption class="note">Melbourne = the 31 councils of Metropolitan Melbourne. Hover over a point for exact numbers.</figcaption>
         </figure>
       </div>
-
-      <div class="grid">
-        <figure class="span-8">
-          <h3>Injury crashes in every month since 2012</h3>
-          <div id="vis-monthly" class="vis"></div>
-        </figure>
-        <div class="span-4 text text-aside">
-          <p>Darker cells mean more crashes. The pale cells of 2020 and 2021 are Melbourne’s COVID-19 lockdowns: in April 2020 crashes fell by more than 40% compared with April 2019.</p>
-          <p>Within months of each lockdown ending, crash numbers were back where they had been.</p>
-        </div>
-      </div>
-
-      <figure class="wide">
-        <h3>People killed each year, by road user</h3>
-        <p class="lead-in">Fewer car passengers are dying than a decade ago, but deaths of motorcyclists and pedestrians have risen. Numbers mark the first and last year.</p>
-        <div id="vis-users" class="vis scroll-x"></div>
-        <figcaption class="note">Each panel has its own vertical scale, so compare the numbers rather than the heights of the lines.</figcaption>
-      </figure>
     </section>
 
     <hr class="lane">
@@ -98,98 +87,64 @@
 
     <hr class="lane">
 
-    <!-- ===================================================== WHEN -->
-    <section class="chapter" aria-labelledby="h-when">
-      <div class="grid">
-        <figure class="span-8">
-          <h3>Crashes by day and hour, 2020–2024</h3>
-          <div id="vis-dayhour" class="vis"></div>
-          <figcaption class="note">Use the menu below the chart to switch from all injury crashes to fatal crashes only. In the fatal-only view each cell holds just 0 to 17 deaths, so look at the broad pattern rather than single cells.</figcaption>
-        </figure>
-        <div class="span-4 text">
-          <h2 id="h-when">Crashes follow the commute. Night crashes are the deadliest.</h2>
-          <p>Crash numbers rise with weekday traffic: the morning peak around 8am and the evening peak from 3pm to 6pm.</p>
-          <p>Switch to fatal crashes and the commute pattern fades. Afternoons are still busy, and taken together, the hours from midnight to 4am on <strong>Saturday and Sunday</strong> see about twice as many deaths as the same hours on weekdays.</p>
-          <p>Fewer crashes happen at night, but each one is far more likely to kill, as the clock below shows.</p>
-        </div>
-      </div>
-
-      <!-- "pair": the two figures share title, chart and caption rows so they line up -->
-      <div class="grid pair">
-        <figure class="span-5">
-          <h3>How often a crash is fatal, hour by hour</h3>
-          <div id="vis-radial" class="vis vis-centre"></div>
-          <figcaption class="note">Read it like a 24-hour clock, with midnight at the top. Between 1am and 2am about 1 in 23 injury crashes kills someone; between 8am and 9am it is about 1 in 94.</figcaption>
-        </figure>
-        <figure class="span-7">
-          <h3>When each road user is killed or seriously injured</h3>
-          <div id="vis-ridgeline" class="vis"></div>
-          <figcaption class="note">Each ridge shows how one group’s serious injuries and deaths are spread across the day. Cyclists peak in the morning and evening commute; pedestrians and motorcyclists in the afternoon and early evening.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <hr class="lane">
-
     <!-- ===================================================== WHERE -->
     <section class="chapter" aria-labelledby="h-where">
-      <div class="grid">
-        <div class="span-8 text">
-          <h2 id="h-where">The risk is highest in the regions</h2>
+      <!-- intro row: heading left, paragraph right -->
+      <div class="grid intro">
+        <h2 id="h-where" class="span-5">The risk is highest in the regions</h2>
+        <div class="span-7 text">
           <p>Measured against the number of people who live there, serious crashes are most common in rural shires crossed by busy highways and tourist routes, such as Murrindindi, Towong and Strathbogie. Per resident, a fatal crash is about <strong>three and a half times</strong> as likely in Regional Victoria as in Melbourne.</p>
         </div>
       </div>
 
-      <figure class="wide">
+      <!-- map row: state map left, Melbourne inset and note right -->
+      <figure class="map-row">
         <h3>Fatal and serious-injury crashes per 100,000 residents a year, 2020–2024</h3>
-        <div id="vis-choropleth" class="vis scroll-x"></div>
-        <figcaption class="note">Left: all of Victoria. Right: Metropolitan Melbourne enlarged. Crashes are counted where they happened, not where the people involved live, so places with many visitors and few residents, such as the City of Melbourne, rank high. Hover over a council for details.</figcaption>
+        <div class="grid">
+          <div class="span-8"><div id="vis-choro-state" class="vis"></div></div>
+          <div class="span-4 inset">
+            <p class="inset-title">Metropolitan Melbourne, enlarged</p>
+            <div id="vis-choro-melb" class="vis"></div>
+            <p class="note">Crashes are counted where they happen, not where the people involved live, so the City of Melbourne, with many visitors and few residents, ranks high. Hover over a council for details.</p>
+          </div>
+        </div>
       </figure>
 
-      <div class="grid pair">
-        <figure class="span-6">
-          <h3>Where the most serious crashes happen</h3>
-          <div id="vis-symbol" class="vis"></div>
-          <figcaption class="note">In raw numbers the picture flips: most crashes happen where most people live, in Greater Geelong and Melbourne’s growing outer suburbs. Click the legend to show one area.</figcaption>
-        </figure>
-        <figure class="span-6">
-          <h3>Every fatal crash, 2020–2024</h3>
-          <div id="vis-dots" class="vis"></div>
-          <figcaption class="note">Outside Melbourne, fatal crashes trace the highway network. Click the legend to show one speed limit.</figcaption>
-        </figure>
-      </div>
-
-      <div class="grid">
-        <div class="span-5 text text-aside">
-          <h2>Speed decides how bad a crash is</h2>
-          <p>On roads signed 100 km/h, about 1 in 20 injury crashes kills someone. On 60 km/h suburban roads it is about 1 in 89.</p>
-          <p>Higher speed limits are mostly on rural roads, which is a large part of why the regions carry so much of the toll.</p>
+      <figure class="map-row">
+        <h3>Where the most serious crashes happen: fatal and serious-injury crashes, 2020–2024</h3>
+        <div class="grid">
+          <div class="span-8"><div id="vis-symbol-state" class="vis"></div></div>
+          <div class="span-4 inset">
+            <p class="inset-title">Metropolitan Melbourne, enlarged</p>
+            <div id="vis-symbol-melb" class="vis"></div>
+            <p class="note">In raw numbers the picture flips: most crashes happen where most people live, in Greater Geelong and Melbourne’s growing outer suburbs. Circles are the same scale in both maps. Click the legend to show one area.</p>
+          </div>
         </div>
-        <figure class="span-7">
-          <h3>Share of injury crashes that were fatal, by speed limit, 2020–2024</h3>
-          <div id="vis-speed" class="vis"></div>
-        </figure>
-      </div>
+      </figure>
     </section>
 
     <hr class="lane">
 
-    <!-- ===================================================== TAKEAWAYS -->
-    <section class="chapter takeaways" aria-labelledby="h-sum">
-      <h2 id="h-sum">What the numbers add up to</h2>
-      <div class="grid">
-        <div class="span-4">
-          <h3>Where you drive matters</h3>
-          <p>One in four Victorians lives in the regions, but more than half of road deaths happen there.</p>
+    <!-- ===================================================== SPEED -->
+    <section class="chapter" aria-labelledby="h-speed">
+      <div class="grid intro">
+        <h2 id="h-speed" class="span-5">Speed decides how bad a crash is</h2>
+        <div class="span-7 text">
+          <p>On roads signed 100 km/h, about 1 in 20 injury crashes kills someone. On 60 km/h suburban roads it is about 1 in 89. Higher limits are mostly on rural roads: two in three fatal crashes in Regional Victoria were on roads signed 100 or 110 km/h, compared with one in ten in Melbourne.</p>
         </div>
-        <div class="span-4">
-          <h3>Speed and darkness multiply harm</h3>
-          <p>A crash on a 100 km/h road is about four times as likely to kill as one on a 60 km/h road. The same gap separates crashes after midnight from those in the morning peak.</p>
-        </div>
-        <div class="span-4">
-          <h3>Unprotected road users carry more of the toll</h3>
-          <p>Motorcyclist deaths rose from 41 in 2012 to 61 in 2024, and pedestrian deaths are also up.</p>
-        </div>
+      </div>
+
+      <div class="grid pair">
+        <figure class="span-7">
+          <h3>Every fatal crash, 2020–2024, by speed limit</h3>
+          <div id="vis-dots" class="vis"></div>
+          <figcaption class="note">Outside Melbourne, fatal crashes trace the highway network. Click the legend to show one speed limit.</figcaption>
+        </figure>
+        <figure class="span-5">
+          <h3>Share of injury crashes that were fatal, by speed limit</h3>
+          <div id="vis-speed" class="vis"></div>
+          <figcaption class="note">Colours match the map. Hover over a bar for the number of crashes.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -200,7 +155,7 @@
           <h2>About this page</h2>
           <p>Created by Jiayi Li for FIT3179 Data Visualisation, Monash University. October 2026.</p>
           <p>Charts were built with <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>. The specification for every chart is in the <code>js</code> folder of this page’s GitHub repository.</p>
-          <p>Generative AI (Claude, Anthropic) was used to help process the data, write code and check the grammar of the text.</p>
+          <p>Generative AI (Claude, Anthropic) was used to help process the data, write code, draw the header illustration (written as SVG code for this page) and check the grammar of the text.</p>
         </div>
         <div class="span-6">
           <h2>Data sources</h2>
