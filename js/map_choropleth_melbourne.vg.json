@@ -1,0 +1,422 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map of the 31 councils of Metropolitan Melbourne, enlarged, using the same colour classes as the state map. Leader lines label the two highest-rate councils and the lowest.",
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "height": 270,
+  "data": {
+    "url": "data/vic_lga.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "lga"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.lgaCode",
+      "from": {
+        "data": {
+          "url": "data/lga_crashes.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "lgaCode": "string"
+            }
+          }
+        },
+        "key": "lgaCode",
+        "fields": [
+          "ksi_crashes",
+          "fatal_crashes",
+          "crashes"
+        ]
+      }
+    },
+    {
+      "lookup": "properties.lgaCode",
+      "from": {
+        "data": {
+          "url": "data/lga_population.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "lgaCode": "string"
+            }
+          }
+        },
+        "key": "lgaCode",
+        "fields": [
+          "population_2021",
+          "metro"
+        ]
+      }
+    },
+    {
+      "calculate": "isValid(datum.population_2021) ? datum.ksi_crashes / 5 / datum.population_2021 * 100000 : null",
+      "as": "rate"
+    },
+    {
+      "calculate": "replace(datum.properties.lgaName, ' (Vic.)', '')",
+      "as": "council"
+    },
+    {
+      "filter": "datum.metro == 1"
+    }
+  ],
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -36,
+      -38
+    ],
+    "rotate": [
+      -145,
+      0
+    ],
+    "fit": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            144.5,
+            -38.4
+          ],
+          [
+            145.75,
+            -37.45
+          ]
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "hover_metro",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout",
+            "fields": [
+              "properties.lgaCode"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.8,
+        "clip": true
+      },
+      "encoding": {
+        "color": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": "Per 100,000 residents a year",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              50,
+              75,
+              100,
+              150,
+              200
+            ],
+            "range": [
+              "#FBE6DA",
+              "#F5BFA4",
+              "#EC8F6C",
+              "#D85D40",
+              "#AF2F27",
+              "#741320"
+            ]
+          },
+          "legend": null
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "hover_metro",
+            "empty": false,
+            "value": 2.2
+          },
+          "value": 0.8
+        },
+        "stroke": {
+          "condition": {
+            "param": "hover_metro",
+            "empty": false,
+            "value": "#1E2328"
+          },
+          "value": "#FFFFFF"
+        },
+        "tooltip": [
+          {
+            "field": "council",
+            "title": "Council"
+          },
+          {
+            "field": "rate",
+            "title": "Per 100,000 residents a year",
+            "format": ".0f"
+          },
+          {
+            "field": "ksi_crashes",
+            "title": "Fatal + serious crashes (5 yrs)",
+            "format": ","
+          },
+          {
+            "field": "population_2021",
+            "title": "Residents (2021)",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "council": "Melbourne",
+            "name": "City of Melbourne",
+            "lx": 144.78,
+            "ly": -38.07,
+            "align": "center"
+          },
+          {
+            "council": "Greater Dandenong",
+            "lx": 145.48,
+            "ly": -38.3,
+            "align": "center"
+          },
+          {
+            "council": "Manningham",
+            "lx": 145.45,
+            "ly": -37.55,
+            "align": "center"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "council",
+          "from": {
+            "data": {
+              "url": "data/lga_crashes.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "lgaCode": "string"
+                }
+              }
+            },
+            "key": "lgaName",
+            "fields": [
+              "lgaCode",
+              "lon",
+              "lat",
+              "ksi_crashes"
+            ]
+          }
+        },
+        {
+          "lookup": "lgaCode",
+          "from": {
+            "data": {
+              "url": "data/lga_population.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "lgaCode": "string"
+                }
+              }
+            },
+            "key": "lgaCode",
+            "fields": [
+              "population_2021"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.ksi_crashes / 5 / datum.population_2021 * 100000",
+          "as": "rate"
+        },
+        {
+          "calculate": "[datum.name || datum.council, format(datum.rate, '.0f') + ' per 100,000']",
+          "as": "label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#1E2328",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "longitude2": {
+              "field": "lx"
+            },
+            "latitude2": {
+              "field": "ly"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "circle",
+            "color": "#1E2328",
+            "size": 22,
+            "opacity": 1
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "baseline": "bottom",
+            "dy": -18,
+            "fontSize": 11,
+            "fontWeight": 700,
+            "lineHeight": 14,
+            "color": "#1E2328",
+            "stroke": "#F6F6F4",
+            "strokeWidth": 3.5,
+            "strokeJoin": "round"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lx",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "ly",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.ly > datum.lat"
+            }
+          ]
+        },
+        {
+          "mark": {
+            "type": "text",
+            "baseline": "top",
+            "dy": 4,
+            "fontSize": 11,
+            "fontWeight": 700,
+            "lineHeight": 14,
+            "color": "#1E2328",
+            "stroke": "#F6F6F4",
+            "strokeWidth": 3.5,
+            "strokeJoin": "round"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lx",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "ly",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.ly <= datum.lat"
+            }
+          ]
+        },
+        {
+          "mark": {
+            "type": "text",
+            "baseline": "bottom",
+            "dy": -18,
+            "fontSize": 11,
+            "fontWeight": 700,
+            "lineHeight": 14,
+            "color": "#1E2328"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lx",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "ly",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.ly > datum.lat"
+            }
+          ]
+        },
+        {
+          "mark": {
+            "type": "text",
+            "baseline": "top",
+            "dy": 4,
+            "fontSize": 11,
+            "fontWeight": 700,
+            "lineHeight": 14,
+            "color": "#1E2328"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lx",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "ly",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.ly <= datum.lat"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
