@@ -1,0 +1,431 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Ridgeline plot. Each ridge shows how the people killed or seriously injured in one road user group are spread across the 24 hours of the day, as a share of that group's total, so groups of different sizes can be compared. A thin line in each row marks 5%; each label gives the group's peak hour. Hover to see every group's value at the same hour.",
+  "data": {
+    "url": "data/ksi_user_hour.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "hour": "number",
+        "people": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "people",
+          "as": "group_total"
+        }
+      ],
+      "groupby": [
+        "road_user"
+      ]
+    },
+    {
+      "calculate": "datum.people / datum.group_total",
+      "as": "share"
+    },
+    {
+      "calculate": "{'Driver':'Drivers','Passenger':'Passengers','Motorcyclist':'Motorcyclists','Pedestrian':'Pedestrians','Cyclist':'Cyclists'}[datum.road_user]",
+      "as": "group"
+    },
+    {
+      "calculate": "datum.hour == 0 ? '12am' : datum.hour < 12 ? datum.hour + 'am' : datum.hour == 12 ? '12pm' : (datum.hour - 12) + 'pm'",
+      "as": "hour_label"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "rank"
+        }
+      ],
+      "groupby": [
+        "road_user"
+      ],
+      "sort": [
+        {
+          "field": "share",
+          "order": "descending"
+        }
+      ]
+    }
+  ],
+  "spacing": 0,
+  "bounds": "flush",
+  "facet": {
+    "row": {
+      "field": "group",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Cyclists",
+        "Pedestrians",
+        "Motorcyclists",
+        "Drivers",
+        "Passengers"
+      ],
+      "header": {
+        "labels": false
+      }
+    }
+  },
+  "spec": {
+    "width": 340,
+    "height": 58,
+    "encoding": {
+      "x": {
+        "field": "hour",
+        "type": "quantitative",
+        "title": null,
+        "scale": {
+          "domain": [
+            0,
+            24
+          ],
+          "nice": false
+        },
+        "axis": {
+          "values": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            15,
+            18,
+            21
+          ],
+          "labelExpr": "datum.value == 0 ? '12am' : datum.value < 12 ? datum.value + 'am' : datum.value == 12 ? '12pm' : (datum.value - 12) + 'pm'",
+          "grid": true,
+          "gridColor": "#E4E6E3",
+          "ticks": false,
+          "domain": false,
+          "labelOverlap": false,
+          "labelFontSize": 11
+        }
+      },
+      "y": {
+        "field": "share",
+        "type": "quantitative",
+        "axis": null,
+        "scale": {
+          "domain": [
+            0,
+            0.06413
+          ],
+          "nice": false
+        }
+      }
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "interpolate": "monotone",
+          "fillOpacity": 0.85,
+          "stroke": "#F6F6F4",
+          "strokeWidth": 1.5
+        },
+        "encoding": {
+          "fill": {
+            "field": "road_user",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": [
+                "Driver",
+                "Passenger",
+                "Motorcyclist",
+                "Pedestrian",
+                "Cyclist"
+              ],
+              "range": [
+                "#3F5A73",
+                "#94ABBF",
+                "#D98A1F",
+                "#7D5BA6",
+                "#1F9E8F"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "description": "5% scale bar at the right end of each row",
+        "transform": [
+          {
+            "filter": "datum.hour == 0"
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "color": "#1E2328",
+          "strokeWidth": 1.5
+        },
+        "encoding": {
+          "x": {
+            "datum": 23.75
+          },
+          "y": {
+            "datum": 0
+          },
+          "y2": {
+            "datum": 0.05
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.hour == 0"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dx": 4,
+          "fontSize": 10.5,
+          "color": "#4A525A"
+        },
+        "encoding": {
+          "x": {
+            "datum": 23.75
+          },
+          "y": {
+            "datum": 0.05
+          },
+          "text": {
+            "value": "5%"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.hour == 0"
+          }
+        ],
+        "mark": {
+          "type": "tick",
+          "orient": "horizontal",
+          "color": "#1E2328",
+          "thickness": 1.5,
+          "size": 7
+        },
+        "encoding": {
+          "x": {
+            "datum": 23.75
+          },
+          "y": {
+            "datum": 0.05
+          }
+        }
+      },
+      {
+        "description": "Group name and its peak hour, to the left of each ridge",
+        "transform": [
+          {
+            "filter": "datum.rank == 1"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "bottom",
+          "dx": -10,
+          "dy": -15,
+          "fontSize": 13,
+          "fontWeight": 700,
+          "color": "#1E2328"
+        },
+        "encoding": {
+          "x": {
+            "datum": 0
+          },
+          "y": {
+            "datum": 0
+          },
+          "text": {
+            "field": "group"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.rank == 1"
+          },
+          {
+            "calculate": "'peak ' + datum.hour_label + ', ' + format(datum.share, '.0%')",
+            "as": "peak"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "bottom",
+          "dx": -10,
+          "dy": -1,
+          "fontSize": 11,
+          "color": "#6B737B"
+        },
+        "encoding": {
+          "x": {
+            "datum": 0
+          },
+          "y": {
+            "datum": 0
+          },
+          "text": {
+            "field": "peak"
+          }
+        }
+      },
+      {
+        "description": "Invisible points that pick the hour nearest the pointer",
+        "params": [
+          {
+            "name": "hover_hour",
+            "select": {
+              "type": "point",
+              "fields": [
+                "hour"
+              ],
+              "on": "pointerover",
+              "clear": "pointerout",
+              "nearest": true
+            }
+          }
+        ],
+        "mark": {
+          "type": "point",
+          "opacity": 0,
+          "size": 400
+        },
+        "encoding": {
+          "y": {
+            "field": "share",
+            "type": "quantitative"
+          },
+          "tooltip": [
+            {
+              "field": "group",
+              "title": "Road user"
+            },
+            {
+              "field": "hour_label",
+              "title": "Hour starting"
+            },
+            {
+              "field": "share",
+              "title": "Share of the group's day",
+              "format": ".1%"
+            },
+            {
+              "field": "people",
+              "title": "People killed or seriously injured",
+              "format": ","
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": {
+              "param": "hover_hour",
+              "empty": false
+            }
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "color": "#1E2328",
+          "strokeWidth": 1
+        },
+        "encoding": {
+          "y": {
+            "datum": 0
+          },
+          "y2": {
+            "field": "share"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": {
+              "param": "hover_hour",
+              "empty": false
+            }
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "bottom",
+          "dy": -4,
+          "fontSize": 11.5,
+          "fontWeight": 700,
+          "color": "#1E2328",
+          "stroke": "#F6F6F4",
+          "strokeWidth": 3,
+          "strokeJoin": "round"
+        },
+        "encoding": {
+          "y": {
+            "field": "share",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "share",
+            "format": ".1%"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": {
+              "param": "hover_hour",
+              "empty": false
+            }
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "bottom",
+          "dy": -4,
+          "fontSize": 11.5,
+          "fontWeight": 700,
+          "color": "#1E2328"
+        },
+        "encoding": {
+          "y": {
+            "field": "share",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "share",
+            "format": ".1%"
+          }
+        }
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "facet": {
+      "spacing": 0
+    }
+  }
+}

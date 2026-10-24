@@ -101,6 +101,8 @@ code { font-size: 0.9em; }
 
 .note { margin-top: 8px; max-width: 72ch; }
 
+.lead-in { font-size: 17px; max-width: 70ch; color: var(--kerb); }
+
 /* ---------------------------------------------------------- grid */
 .grid {
   display: grid;
@@ -118,10 +120,14 @@ code { font-size: 0.9em; }
 .span-8 { grid-column: span 8; }
 
 .text { padding-top: 2px; }
+.text-aside { align-self: center; }
 
 figure { margin: 0; }
+.wide { margin: 0 0 48px; }
 
 .vis { width: 100%; overflow-x: auto; overflow-y: hidden; }
+.vis-centre { display: flex; flex-direction: column; align-items: center; }
+.scroll-x { overflow-x: auto; }
 
 /* Two figures side by side whose titles, charts and captions line up.
    Each figure spans three rows of the parent grid and reuses those rows
@@ -214,7 +220,10 @@ hr.lane {
 }
 #vg-tooltip-element table tr td.key { color: var(--muted); }
 
-/* ---------------------------------------------------------- footer (metadata) */
+/* ---------------------------------------------------------- takeaways + footer */
+.takeaways h3 { font-size: 19px; margin-bottom: 8px; }
+.takeaways .grid { border-top: 2px solid var(--asphalt); padding-top: 24px; }
+
 .meta {
   border-top: 1px solid var(--rule);
   padding-top: 32px;

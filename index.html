@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Behind Victoria's road toll | Road crashes in Victoria, 2012–2024</title>
-  <meta name="description" content="Who is hurt on Victoria's roads, where the risk is highest and how much speed matters. A data visualisation of DataVic road crash data, 2012–2024.">
+  <meta name="description" content="Who is hurt on Victoria's roads, when crashes happen and where the risk is highest. A data visualisation of DataVic road crash data, 2012–2024.">
   <meta name="author" content="Jiayi Li">
 
   <!-- Vega, Vega-Lite and Vega-Embed -->
@@ -29,7 +29,7 @@
       <div class="grid hero-top">
         <div class="span-7 hero-title">
           <h1>Behind Victoria’s road toll</h1>
-          <p class="dek">Who is hurt on our roads, where the risk is highest, and how much speed matters, 2012–2024</p>
+          <p class="dek">Who is hurt on our roads, when crashes happen, and where the risk is highest, 2012–2024</p>
         </div>
         <div class="span-5 hero-art">
           <img src="img/header-road.svg" width="480" height="300" alt="Illustration of a two-lane country road winding past dry paddocks and gum trees, with guide posts and a yellow curve-warning sign.">
@@ -64,6 +64,76 @@
           <figcaption class="note">Melbourne = the 31 councils of Metropolitan Melbourne. Hover over a point for exact numbers.</figcaption>
         </figure>
       </div>
+
+      <div class="grid">
+        <figure class="span-8">
+          <h3>Injury crashes in every month since 2012</h3>
+          <div id="vis-monthly" class="vis"></div>
+        </figure>
+        <div class="span-4 text text-aside">
+          <p>Darker cells mean more crashes. The pale cells of 2020 and 2021 are Melbourne’s COVID-19 lockdowns: in April 2020 crashes fell by more than 40% compared with April 2019.</p>
+          <p>Within months of each lockdown ending, crash numbers were back where they had been.</p>
+        </div>
+      </div>
+
+      <figure class="wide">
+        <h3>People killed each year, by road user</h3>
+        <p class="lead-in">Fewer car passengers are dying than a decade ago, but deaths of motorcyclists and pedestrians have risen. Numbers mark the first and last year.</p>
+        <div id="vis-users" class="vis scroll-x"></div>
+        <figcaption class="note">All five panels share the same scale, so the heights can be compared directly. Hover over a line for the exact number in any year.</figcaption>
+      </figure>
+    </section>
+
+    <hr class="lane">
+
+    <!-- ===================================================== WHO -->
+    <section class="chapter" aria-labelledby="h-who">
+      <div class="grid">
+        <div class="span-4 text">
+          <h2 id="h-who">Without a steel shell, a crash is far more serious</h2>
+          <p>Drivers make up two thirds of everyone caught up in injury crashes, and about half of them walk away unhurt.</p>
+          <p>For people outside a car the outcome is very different: <strong>46% of motorcyclists</strong> and <strong>42% of pedestrians</strong> involved in a crash were killed or seriously injured.</p>
+          <p class="small">A serious injury generally means the person was admitted to hospital.</p>
+        </div>
+        <figure class="span-8">
+          <h3>What happened to everyone involved in an injury crash, 2020–2024</h3>
+          <div id="vis-outcome" class="vis"></div>
+          <figcaption class="note">The height of each band shows how many people of that type were involved; the colours show the outcome. Bold figures give the share killed or seriously injured.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <hr class="lane">
+
+    <!-- ===================================================== WHEN -->
+    <section class="chapter" aria-labelledby="h-when">
+      <div class="grid">
+        <figure class="span-8">
+          <h3>Crashes by day and hour, 2020–2024</h3>
+          <div id="vis-dayhour" class="vis"></div>
+          <figcaption class="note">Use the menu to switch from all injury crashes to fatal crashes only. In the fatal-only view each cell holds just 0 to 17 deaths, so look at the broad pattern rather than single cells.</figcaption>
+        </figure>
+        <div class="span-4 text">
+          <h2 id="h-when">Crashes follow the commute. Night crashes are the deadliest.</h2>
+          <p>Crashes rise with weekday traffic, peaking around 8am and again from 3pm to 6pm.</p>
+          <p>Switch to fatal crashes and the commute pattern fades. From midnight to 4am, a <strong>Saturday or Sunday</strong> sees about twice as many deaths as a weekday.</p>
+          <p>Fewer crashes happen at night, but each one is far more likely to kill, as the clock below shows.</p>
+        </div>
+      </div>
+
+      <!-- "pair": the two figures share title, chart and caption rows so they line up -->
+      <div class="grid pair">
+        <figure class="span-6">
+          <h3>How often a crash is fatal, hour by hour</h3>
+          <div id="vis-radial" class="vis vis-centre"></div>
+          <figcaption class="note">Read it like a 24-hour clock, with midnight at the top. Each number is the share of injury crashes in that hour that killed someone. From midnight to 6am it is about 1 in 26; from 7am to 7pm, about 1 in 71.</figcaption>
+        </figure>
+        <figure class="span-6">
+          <h3>When each road user is killed or seriously injured</h3>
+          <div id="vis-ridgeline" class="vis"></div>
+          <figcaption class="note">Each ridge shows how one group’s serious injuries and deaths are spread across the day, as a share of that group’s total. The short bar at the end of each row shows how tall 5% is. Hover to compare all five groups at the same hour.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <hr class="lane">
@@ -90,14 +160,21 @@
           </div>
         </div>
       </figure>
-    </section>
 
-    <hr class="lane">
+      <figure class="map-row">
+        <h3>Where the most serious crashes happen: fatal and serious-injury crashes, 2020–2024</h3>
+        <div class="grid">
+          <div class="span-8"><div id="vis-symbol-state" class="vis"></div></div>
+          <div class="span-4 inset">
+            <p class="inset-title">Metropolitan Melbourne, enlarged</p>
+            <div id="vis-symbol-melb" class="vis"></div>
+            <p class="note">In raw numbers the picture flips: most crashes happen where most people live, in Greater Geelong and Melbourne’s growing outer suburbs. Circles are the same scale in both maps. Click the legend to show one area.</p>
+          </div>
+        </div>
+      </figure>
 
-    <!-- ===================================================== SPEED -->
-    <section class="chapter" aria-labelledby="h-speed">
       <div class="grid intro">
-        <h2 id="h-speed" class="span-5">Speed decides how bad a crash is</h2>
+        <h2 class="span-5">Speed decides how bad a crash is</h2>
         <div class="span-7 text">
           <p>On roads signed 100 km/h, about 1 in 20 injury crashes kills someone. On 60 km/h suburban roads it is about 1 in 89. Higher limits are mostly on rural roads: two in three fatal crashes in Regional Victoria were on roads signed 100 or 110 km/h, compared with one in ten in Melbourne.</p>
         </div>
@@ -114,6 +191,27 @@
           <div id="vis-speed" class="vis"></div>
           <figcaption class="note">Colours match the map. Hover over a bar for the number of crashes.</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <hr class="lane">
+
+    <!-- ===================================================== TAKEAWAYS -->
+    <section class="chapter takeaways" aria-labelledby="h-sum">
+      <h2 id="h-sum">What the numbers add up to</h2>
+      <div class="grid">
+        <div class="span-4">
+          <h3>Where you drive matters</h3>
+          <p>One in four Victorians lives in the regions, but more than half of road deaths happen there.</p>
+        </div>
+        <div class="span-4">
+          <h3>Speed and darkness multiply harm</h3>
+          <p>A crash on a 100 km/h road is about four times as likely to kill as one on a 60 km/h road. The same gap separates crashes after midnight from those in the morning peak.</p>
+        </div>
+        <div class="span-4">
+          <h3>Unprotected road users carry more of the toll</h3>
+          <p>Motorcyclist deaths rose from 41 in 2012 to 61 in 2024, and pedestrian deaths are also up.</p>
+        </div>
       </div>
     </section>
 

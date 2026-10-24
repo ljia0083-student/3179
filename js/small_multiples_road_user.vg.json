@@ -1,0 +1,284 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small multiples: people killed each year by road user type, 2012 to the latest full year. All panels share one vertical scale so the size of each group can be compared directly.",
+  "data": {
+    "url": "data/people_killed.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.road_user != 'Other or unknown'"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "killed"
+        }
+      ],
+      "groupby": [
+        "year",
+        "road_user"
+      ]
+    },
+    {
+      "calculate": "{'Driver':'Drivers','Passenger':'Passengers','Motorcyclist':'Motorcyclists','Pedestrian':'Pedestrians','Cyclist':'Cyclists'}[datum.road_user]",
+      "as": "group"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "year",
+          "as": "last_year"
+        },
+        {
+          "op": "min",
+          "field": "year",
+          "as": "first_year"
+        }
+      ]
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "group",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Drivers",
+        "Passengers",
+        "Motorcyclists",
+        "Pedestrians",
+        "Cyclists"
+      ],
+      "header": {
+        "labelFontSize": 14,
+        "labelFontWeight": 700,
+        "labelAnchor": "start",
+        "labelPadding": 4
+      }
+    }
+  },
+  "spacing": 20,
+  "spec": {
+    "width": 168,
+    "height": 140,
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "quantitative",
+        "title": null,
+        "scale": {
+          "domain": [
+            2010.8,
+            2025.2
+          ],
+          "nice": false
+        },
+        "axis": {
+          "values": [
+            2012,
+            2018,
+            2024
+          ],
+          "format": "d",
+          "ticks": false,
+          "domain": false,
+          "grid": false,
+          "labelFlush": true
+        }
+      },
+      "y": {
+        "field": "killed",
+        "type": "quantitative",
+        "title": null,
+        "scale": {
+          "domain": [
+            0,
+            160
+          ],
+          "nice": false,
+          "zero": true
+        },
+        "axis": {
+          "values": [
+            0,
+            50,
+            100,
+            150
+          ],
+          "ticks": false,
+          "domain": false,
+          "labelPadding": 6
+        }
+      },
+      "color": {
+        "field": "road_user",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "Driver",
+            "Passenger",
+            "Motorcyclist",
+            "Pedestrian",
+            "Cyclist"
+          ],
+          "range": [
+            "#3F5A73",
+            "#7E97AD",
+            "#D98A1F",
+            "#7D5BA6",
+            "#1F9E8F"
+          ]
+        },
+        "legend": null
+      }
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "opacity": 0.18,
+          "interpolate": "monotone"
+        },
+        "encoding": {
+          "y": {
+            "field": "killed",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "line",
+          "strokeWidth": 2,
+          "interpolate": "monotone"
+        },
+        "encoding": {
+          "tooltip": [
+            {
+              "field": "group",
+              "title": "Road user"
+            },
+            {
+              "field": "year",
+              "title": "Year"
+            },
+            {
+              "field": "killed",
+              "title": "People killed"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.year == datum.last_year || datum.year == datum.first_year"
+          }
+        ],
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "size": 36,
+          "opacity": 1
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.year == datum.first_year"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "dy": -11,
+          "align": "left",
+          "dx": -3,
+          "fontSize": 12,
+          "fontWeight": 700
+        },
+        "encoding": {
+          "text": {
+            "field": "killed"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "window": [
+              {
+                "op": "lag",
+                "field": "killed",
+                "as": "prev"
+              }
+            ],
+            "groupby": [
+              "road_user"
+            ],
+            "sort": [
+              {
+                "field": "year"
+              }
+            ]
+          },
+          {
+            "filter": "datum.year == datum.last_year && datum.prev <= datum.killed + 5"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "dy": -11,
+          "align": "right",
+          "dx": 3,
+          "fontSize": 12,
+          "fontWeight": 700
+        },
+        "encoding": {
+          "text": {
+            "field": "killed"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "window": [
+              {
+                "op": "lag",
+                "field": "killed",
+                "as": "prev"
+              }
+            ],
+            "groupby": [
+              "road_user"
+            ],
+            "sort": [
+              {
+                "field": "year"
+              }
+            ]
+          },
+          {
+            "filter": "datum.year == datum.last_year && datum.prev > datum.killed + 5"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "dy": 13,
+          "align": "right",
+          "dx": 3,
+          "fontSize": 12,
+          "fontWeight": 700,
+          "baseline": "top"
+        },
+        "encoding": {
+          "text": {
+            "field": "killed"
+          }
+        }
+      }
+    ]
+  }
+}

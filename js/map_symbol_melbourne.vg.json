@@ -1,0 +1,362 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map of the 31 councils of Metropolitan Melbourne, enlarged. Circles use the same size scale as the state map, so they can be compared directly.",
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "height": 270,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -36,
+      -38
+    ],
+    "rotate": [
+      -145,
+      0
+    ],
+    "fit": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            144.5,
+            -38.4
+          ],
+          [
+            145.75,
+            -37.45
+          ]
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/vic_lga.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "lga"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.lgaCode",
+          "from": {
+            "data": {
+              "url": "data/lga_population.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "lgaCode": "string"
+                }
+              }
+            },
+            "key": "lgaCode",
+            "fields": [
+              "metro"
+            ]
+          }
+        },
+        {
+          "filter": "datum.metro == 1"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E6E8E4",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.8,
+        "clip": true
+      }
+    },
+    {
+      "data": {
+        "url": "data/lga_crashes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lgaCode": "string"
+          }
+        }
+      },
+      "transform": [
+        {
+          "lookup": "lgaCode",
+          "from": {
+            "data": {
+              "url": "data/lga_population.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "lgaCode": "string"
+                }
+              }
+            },
+            "key": "lgaCode",
+            "fields": [
+              "metro"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.metro == 1 ? 'Metropolitan Melbourne' : 'Regional Victoria'",
+          "as": "area"
+        },
+        {
+          "calculate": "replace(datum.lgaName, ' (Vic.)', '')",
+          "as": "council"
+        },
+        {
+          "filter": "datum.metro == 1"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "stroke": "#FFFFFF",
+            "strokeWidth": 0.8,
+            "clip": true
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "ksi_crashes",
+              "type": "quantitative",
+              "title": "Fatal + serious crashes, 5 years",
+              "scale": {
+                "domain": [
+                  0,
+                  1500
+                ],
+                "range": [
+                  0,
+                  800
+                ]
+              },
+              "legend": null
+            },
+            "color": {
+              "field": "area",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "Metropolitan Melbourne",
+                  "Regional Victoria"
+                ],
+                "range": [
+                  "#2F62A8",
+                  "#4E8A3A"
+                ]
+              },
+              "legend": null
+            },
+            "opacity": {
+              "value": 0.78
+            },
+            "order": {
+              "field": "ksi_crashes",
+              "sort": "descending"
+            },
+            "tooltip": [
+              {
+                "field": "council",
+                "title": "Council"
+              },
+              {
+                "field": "area",
+                "title": "Area"
+              },
+              {
+                "field": "ksi_crashes",
+                "title": "Fatal + serious crashes (5 yrs)",
+                "format": ","
+              },
+              {
+                "field": "fatal_crashes",
+                "title": "of which fatal",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.council == 'Casey' || datum.council == 'Melbourne' || datum.council == 'Hume'"
+            },
+            {
+              "calculate": "(datum.council == 'Melbourne' ? 'City of Melbourne' : datum.council) + ' ' + format(datum.ksi_crashes, ',')",
+              "as": "label"
+            },
+            {
+              "calculate": "{'Melbourne': 144.8, 'Casey': 145.5, 'Hume': 144.68}[datum.council]",
+              "as": "lx"
+            },
+            {
+              "calculate": "{'Melbourne': -38.06, 'Casey': -38.27, 'Hume': -37.5}[datum.council]",
+              "as": "ly"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {
+                "type": "rule",
+                "color": "#1E2328",
+                "strokeWidth": 1
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "longitude2": {
+                  "field": "lx"
+                },
+                "latitude2": {
+                  "field": "ly"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -4,
+                "fontSize": 11,
+                "fontWeight": 700,
+                "color": "#1E2328",
+                "stroke": "#F6F6F4",
+                "strokeWidth": 3.5,
+                "strokeJoin": "round"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lx",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "ly",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.ly > datum.lat"
+                }
+              ]
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "top",
+                "dy": 4,
+                "fontSize": 11,
+                "fontWeight": 700,
+                "color": "#1E2328",
+                "stroke": "#F6F6F4",
+                "strokeWidth": 3.5,
+                "strokeJoin": "round"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lx",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "ly",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.ly <= datum.lat"
+                }
+              ]
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -4,
+                "fontSize": 11,
+                "fontWeight": 700,
+                "color": "#1E2328"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lx",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "ly",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.ly > datum.lat"
+                }
+              ]
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "top",
+                "dy": 4,
+                "fontSize": 11,
+                "fontWeight": 700,
+                "color": "#1E2328"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lx",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "ly",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "label"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.ly <= datum.lat"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

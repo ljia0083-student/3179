@@ -1,0 +1,210 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of crashes by day of week and hour of day for the five most recent full years. A drop-down switches between all injury crashes, fatal or serious crashes, and fatal crashes only. The morning and evening peaks are labelled in the all-crashes view.",
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "height": 280,
+  "data": {
+    "url": "data/crashes_day_hour.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "hour": "number",
+        "crashes": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "severity_choice",
+      "value": "All injury crashes",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All injury crashes",
+          "Fatal or serious crashes",
+          "Fatal crashes only"
+        ],
+        "name": "Show "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "severity_choice == 'All injury crashes' || (severity_choice == 'Fatal or serious crashes' && (datum.severity == 'Fatal' || datum.severity == 'Serious injury')) || (severity_choice == 'Fatal crashes only' && datum.severity == 'Fatal')"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "crashes",
+          "as": "n"
+        }
+      ],
+      "groupby": [
+        "day",
+        "hour"
+      ]
+    },
+    {
+      "calculate": "datum.hour == 0 ? '12am' : datum.hour < 12 ? datum.hour + 'am' : datum.hour == 12 ? '12pm' : (datum.hour - 12) + 'pm'",
+      "as": "hour_label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "hour",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelExpr": "datum.value % 3 == 0 ? (datum.value == 0 ? '12am' : datum.value < 12 ? datum.value + 'am' : datum.value == 12 ? '12pm' : (datum.value - 12) + 'pm') : ''",
+        "labelAngle": 0,
+        "ticks": false,
+        "domain": false,
+        "orient": "top"
+      }
+    },
+    "y": {
+      "field": "day",
+      "type": "ordinal",
+      "title": null,
+      "sort": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "axis": {
+        "ticks": false,
+        "domain": false,
+        "labelPadding": 6
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#F6F6F4",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "n",
+          "type": "quantitative",
+          "title": "Crashes, 2020–2024",
+          "scale": {
+            "range": [
+              "#F1F3F5",
+              "#B7C2CC",
+              "#6E8193",
+              "#2A3B4C"
+            ],
+            "zero": true
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 220,
+            "titleOrient": "left",
+            "titleAnchor": "start"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "day",
+            "title": "Day"
+          },
+          {
+            "field": "hour_label",
+            "title": "Hour starting"
+          },
+          {
+            "field": "n",
+            "title": "Crashes",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "mode": "All injury crashes",
+            "day": "Thursday",
+            "hour": 8,
+            "text": "Morning peak"
+          },
+          {
+            "mode": "All injury crashes",
+            "day": "Wednesday",
+            "hour": 16,
+            "text": "Evening peak"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.mode == severity_choice"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "color": "#FFFFFF",
+        "baseline": "middle",
+        "stroke": "#2A3B4C",
+        "strokeWidth": 3,
+        "strokeOpacity": 0.55
+      },
+      "encoding": {
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "mode": "All injury crashes",
+            "day": "Thursday",
+            "hour": 8,
+            "text": "Morning peak"
+          },
+          {
+            "mode": "All injury crashes",
+            "day": "Wednesday",
+            "hour": 16,
+            "text": "Evening peak"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.mode == severity_choice"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "color": "#FFFFFF",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ]
+}

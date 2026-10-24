@@ -1,0 +1,231 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Radial bar chart laid out like a 24-hour clock (midnight at the top, time runs clockwise). Each wedge is one hour; its length from the centre ring shows the share of injury crashes in that hour that killed someone, and the number at its tip gives the value (five most recent full years).",
+  "width": 440,
+  "height": 440,
+  "data": {
+    "url": "data/crashes_day_hour.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "hour": "number",
+        "crashes": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.severity == 'Fatal' ? datum.crashes : 0",
+      "as": "fatal"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "crashes",
+          "as": "total"
+        },
+        {
+          "op": "sum",
+          "field": "fatal",
+          "as": "fatal"
+        }
+      ],
+      "groupby": [
+        "hour"
+      ]
+    },
+    {
+      "calculate": "datum.fatal / datum.total",
+      "as": "fatal_share"
+    },
+    {
+      "calculate": "datum.hour + 0.05",
+      "as": "start"
+    },
+    {
+      "calculate": "datum.hour + 0.95",
+      "as": "end"
+    },
+    {
+      "calculate": "datum.hour + 0.5",
+      "as": "mid"
+    },
+    {
+      "calculate": "datum.hour == 0 ? '12am' : datum.hour < 12 ? datum.hour + 'am' : datum.hour == 12 ? '12pm' : (datum.hour - 12) + 'pm'",
+      "as": "hour_label"
+    },
+    {
+      "calculate": "'1 in ' + round(1 / datum.fatal_share)",
+      "as": "one_in"
+    },
+    {
+      "calculate": "datum.fatal_share * 100",
+      "as": "pct"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 62,
+        "cornerRadius": 1.5
+      },
+      "encoding": {
+        "theta": {
+          "field": "start",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              24
+            ],
+            "range": [
+              0,
+              6.283185
+            ]
+          },
+          "stack": null
+        },
+        "theta2": {
+          "field": "end"
+        },
+        "radius": {
+          "field": "fatal_share",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "zero": true,
+            "domain": [
+              0,
+              0.045
+            ],
+            "range": [
+              62,
+              166
+            ]
+          }
+        },
+        "color": {
+          "field": "fatal_share",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              0.015,
+              0.02,
+              0.03
+            ],
+            "range": [
+              "#F2B49A",
+              "#E07A5A",
+              "#C03A2B",
+              "#7F1520"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "hour_label",
+            "title": "Hour starting"
+          },
+          {
+            "field": "fatal_share",
+            "title": "Share fatal",
+            "format": ".1%"
+          },
+          {
+            "field": "one_in",
+            "title": "Roughly"
+          },
+          {
+            "field": "fatal",
+            "title": "Fatal crashes",
+            "format": ","
+          },
+          {
+            "field": "total",
+            "title": "All injury crashes",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "color": "#1E2328",
+        "radiusOffset": 11
+      },
+      "encoding": {
+        "theta": {
+          "field": "mid",
+          "type": "quantitative",
+          "stack": null
+        },
+        "radius": {
+          "field": "fatal_share",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "pct",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.hour % 3 == 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "radius": 198,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#4A525A"
+      },
+      "encoding": {
+        "theta": {
+          "field": "mid",
+          "type": "quantitative",
+          "stack": null
+        },
+        "text": {
+          "field": "hour_label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "t": [
+              "% of crashes",
+              "that killed"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#6B737B",
+        "lineHeight": 14,
+        "baseline": "middle",
+        "dy": -7
+      },
+      "encoding": {
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ]
+}
