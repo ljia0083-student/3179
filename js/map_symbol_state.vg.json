@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Proportional symbol map of Victoria. Circle area shows the number of fatal and serious-injury crashes in each council area over the five most recent full years; colour shows Metropolitan Melbourne or Regional Victoria. Click the colour legend to highlight one area.",
+  "description": "Proportional symbol map of Victoria. Circle area shows the number of fatal and serious-injury crashes in each regional council over the five most recent full years. Melbourne's 31 councils are shaded and their circles are drawn in the enlarged map beside it, at the same scale, so the circles do not overlap.",
   "width": "container",
   "autosize": {
     "type": "fit-x",
@@ -32,6 +32,44 @@
         "fill": "#E6E8E4",
         "stroke": "#FFFFFF",
         "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/vic_lga.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "lga"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.lgaCode",
+          "from": {
+            "data": {
+              "url": "data/lga_population.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "lgaCode": "string"
+                }
+              }
+            },
+            "key": "lgaCode",
+            "fields": [
+              "metro"
+            ]
+          }
+        },
+        {
+          "filter": "datum.metro == 1"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#C9D3E3",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.4
       }
     },
     {
@@ -70,22 +108,13 @@
         {
           "calculate": "replace(datum.lgaName, ' (Vic.)', '')",
           "as": "council"
+        },
+        {
+          "filter": "datum.metro == 0"
         }
       ],
       "layer": [
         {
-          "params": [
-            {
-              "name": "area_pick",
-              "select": {
-                "type": "point",
-                "fields": [
-                  "area"
-                ]
-              },
-              "bind": "legend"
-            }
-          ],
           "mark": {
             "type": "circle",
             "stroke": "#FFFFFF",
@@ -157,11 +186,7 @@
               }
             },
             "opacity": {
-              "condition": {
-                "param": "area_pick",
-                "value": 0.78
-              },
-              "value": 0.12
+              "value": 0.78
             },
             "order": {
               "field": "ksi_crashes",
@@ -257,7 +282,7 @@
             "lat": -37.86,
             "lx": 145.55,
             "ly": -38.95,
-            "label": "Melbourne, enlarged at right"
+            "label": "Melbourne's 31 councils: circles shown enlarged at right"
           }
         ]
       },

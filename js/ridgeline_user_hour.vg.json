@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Ridgeline plot. Each ridge shows how the people killed or seriously injured in one road user group are spread across the 24 hours of the day, as a share of that group's total, so groups of different sizes can be compared. A thin line in each row marks 5%; each label gives the group's peak hour. Hover to see every group's value at the same hour.",
+  "description": "Ridgeline plot. Each ridge shows how the people killed or seriously injured in one road user group are spread across the 24 hours of the day, as a share of that group's total, so groups of different sizes can be compared. Each row has its own small y-axis from 0% to 5%; each label gives the group's peak hour. Hover to see every group's value at the same hour.",
   "data": {
     "url": "data/ksi_user_hour.csv",
     "format": {
@@ -54,7 +54,7 @@
       ]
     }
   ],
-  "spacing": 0,
+  "spacing": 12,
   "bounds": "flush",
   "facet": {
     "row": {
@@ -74,7 +74,7 @@
     }
   },
   "spec": {
-    "width": 340,
+    "width": 330,
     "height": 58,
     "encoding": {
       "x": {
@@ -111,7 +111,25 @@
       "y": {
         "field": "share",
         "type": "quantitative",
-        "axis": null,
+        "axis": {
+          "orient": "right",
+          "values": [
+            0,
+            0.05
+          ],
+          "format": ".0%",
+          "title": null,
+          "grid": false,
+          "domain": true,
+          "domainColor": "#1E2328",
+          "domainWidth": 1.2,
+          "ticks": true,
+          "tickColor": "#1E2328",
+          "tickSize": 5,
+          "labelFontSize": 10.5,
+          "labelPadding": 3,
+          "labelBaseline": "middle"
+        },
         "scale": {
           "domain": [
             0,
@@ -151,78 +169,6 @@
                 "#1F9E8F"
               ]
             }
-          }
-        }
-      },
-      {
-        "description": "5% scale bar at the right end of each row",
-        "transform": [
-          {
-            "filter": "datum.hour == 0"
-          }
-        ],
-        "mark": {
-          "type": "rule",
-          "color": "#1E2328",
-          "strokeWidth": 1.5
-        },
-        "encoding": {
-          "x": {
-            "datum": 23.75
-          },
-          "y": {
-            "datum": 0
-          },
-          "y2": {
-            "datum": 0.05
-          }
-        }
-      },
-      {
-        "transform": [
-          {
-            "filter": "datum.hour == 0"
-          }
-        ],
-        "mark": {
-          "type": "text",
-          "align": "left",
-          "baseline": "middle",
-          "dx": 4,
-          "fontSize": 10.5,
-          "color": "#4A525A"
-        },
-        "encoding": {
-          "x": {
-            "datum": 23.75
-          },
-          "y": {
-            "datum": 0.05
-          },
-          "text": {
-            "value": "5%"
-          }
-        }
-      },
-      {
-        "transform": [
-          {
-            "filter": "datum.hour == 0"
-          }
-        ],
-        "mark": {
-          "type": "tick",
-          "orient": "horizontal",
-          "color": "#1E2328",
-          "thickness": 1.5,
-          "size": 7
-        },
-        "encoding": {
-          "x": {
-            "datum": 23.75
-          },
-          "y": {
-            "datum": 0.05
           }
         }
       },
@@ -425,7 +371,7 @@
       "stroke": null
     },
     "facet": {
-      "spacing": 0
+      "spacing": 12
     }
   }
 }
