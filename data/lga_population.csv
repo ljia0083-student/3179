@@ -1,80 +1,80 @@
-lgaCode,lgaName,population_2021,metro
-20110,Alpine,13235,0
-20260,Ararat,11880,0
-20570,Ballarat,113763,0
-20660,Banyule,126236,1
-20740,Bass Coast,40789,0
-20830,Baw Baw,57626,0
-20910,Bayside (Vic.),101306,1
-21010,Benalla,14528,0
-21110,Boroondara,167900,1
-21180,Brimbank,194618,1
-21270,Buloke,6178,0
-21370,Campaspe,38735,0
-21450,Cardinia,118194,1
-21610,Casey,365239,1
-21670,Central Goldfields,13483,0
-21750,Colac Otway,22423,0
-21830,Corangamite,16115,0
-21890,Darebin,148570,1
-22110,East Gippsland,48715,0
-22170,Frankston,139281,1
-22250,Gannawarra,10683,0
-22310,Glen Eira,148908,1
-22410,Glenelg,20152,0
-22490,Golden Plains,24985,0
-22620,Greater Bendigo,121470,0
-22670,Greater Dandenong,158208,1
-22750,Greater Geelong,271057,0
-22830,Greater Shepparton,68409,0
-22910,Hepburn,16604,0
-22980,Hindmarsh,5698,0
-23110,Hobsons Bay,91322,1
-23190,Horsham,20429,0
-23270,Hume,243901,1
-23350,Indigo,17368,0
-23430,Kingston (Vic.),158129,1
-23670,Knox,159103,1
-23810,Latrobe (Vic.),77318,0
-23940,Loddon,7759,0
-24130,Macedon Ranges,51458,0
-24210,Manningham,124700,1
-24250,Mansfield,10178,0
-24330,Maribyrnong,85209,1
-24410,Maroondah,115043,1
-24600,Melbourne,149615,1
-24650,Melton,178960,1
-24700,Merri-bek,171357,1
-24780,Mildura,56972,0
-24850,Mitchell,49460,0
-24900,Moira,30522,0
-24970,Monash,190397,1
-25060,Moonee Valley,121851,1
-25150,Moorabool,37632,0
-25340,Mornington Peninsula,168948,1
-25430,Mount Alexander,20253,0
-25490,Moyne,17374,0
-25620,Murrindindi,15197,0
-25710,Nillumbik,62895,1
-25810,Northern Grampians,11948,0
-25900,Port Phillip,101942,1
-25990,Pyrenees,7671,0
-26080,Queenscliffe,3276,0
-26170,South Gippsland,30577,0
-26260,Southern Grampians,16588,0
-26350,Stonnington,104703,1
-26430,Strathbogie,11455,0
-26490,Surf Coast,37694,0
-26610,Swan Hill,21403,0
-26670,Towong,6223,0
-26700,Wangaratta,29808,0
-26730,Warrnambool,35406,0
-26810,Wellington,45639,0
-26890,West Wimmera,4006,0
-26980,Whitehorse,169346,1
-27070,Whittlesea,229396,1
-27170,Wodonga,43253,0
-27260,Wyndham,292011,1
-27350,Yarra,90114,1
-27450,Yarra Ranges,156068,1
-27630,Yarriambiack,6556,0
+lgaCode,lgaName,population,metro
+20110,Alpine,13236,0
+20260,Ararat,11732,0
+20570,Ballarat,122661,0
+20660,Banyule,132770,1
+20740,Bass Coast,44377,0
+20830,Baw Baw,62784,0
+20910,Bayside (Vic.),107164,1
+21010,Benalla,14581,0
+21110,Boroondara,178601,1
+21180,Brimbank,198181,1
+21270,Buloke,5887,0
+21370,Campaspe,37954,0
+21450,Cardinia,133472,1
+21610,Casey,414929,1
+21670,Central Goldfields,13753,0
+21750,Colac Otway,22209,0
+21830,Corangamite,15712,0
+21890,Darebin,162496,1
+22110,East Gippsland,49669,0
+22170,Frankston,145369,1
+22250,Gannawarra,10311,0
+22310,Glen Eira,163025,1
+22410,Glenelg,19908,0
+22490,Golden Plains,26620,0
+22620,Greater Bendigo,126568,0
+22670,Greater Dandenong,168684,1
+22750,Greater Geelong,295052,0
+22830,Greater Shepparton,69865,0
+22910,Hepburn,17011,0
+22980,Hindmarsh,5447,0
+23110,Hobsons Bay,97031,1
+23190,Horsham,20252,0
+23270,Hume,278885,1
+23350,Indigo,17758,0
+23430,Kingston (Vic.),168061,1
+23670,Knox,163820,1
+23810,Latrobe (Vic.),79112,0
+23940,Loddon,7718,0
+24130,Macedon Ranges,54464,0
+24210,Manningham,132912,1
+24250,Mansfield,10979,0
+24330,Maribyrnong,94672,1
+24410,Maroondah,120247,1
+24600,Melbourne,194481,1
+24650,Melton,231567,1
+24700,Merri-bek,189108,1
+24780,Mildura,57309,0
+24850,Mitchell,58459,0
+24900,Moira,30866,0
+24970,Monash,211833,1
+25060,Moonee Valley,130501,1
+25150,Moorabool,40472,0
+25340,Mornington Peninsula,172217,1
+25430,Mount Alexander,20939,0
+25490,Moyne,17760,0
+25620,Murrindindi,15648,0
+25710,Nillumbik,63797,1
+25810,Northern Grampians,11804,0
+25900,Port Phillip,114434,1
+25990,Pyrenees,7957,0
+26080,Queenscliffe,3317,0
+26170,South Gippsland,31109,0
+26260,Southern Grampians,16483,0
+26350,Stonnington,114789,1
+26430,Strathbogie,11839,0
+26490,Surf Coast,40265,0
+26610,Swan Hill,20962,0
+26670,Towong,6158,0
+26700,Wangaratta,30089,0
+26730,Warrnambool,36255,0
+26810,Wellington,46551,0
+26890,West Wimmera,3915,0
+26980,Whitehorse,185256,1
+27070,Whittlesea,259759,1
+27170,Wodonga,44717,0
+27260,Wyndham,347830,1
+27350,Yarra,101356,1
+27450,Yarra Ranges,160906,1
+27630,Yarriambiack,6295,0

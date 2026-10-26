@@ -98,7 +98,7 @@
         "color": {
           "field": "n",
           "type": "quantitative",
-          "title": "Crashes, 2020–2024",
+          "title": "Crashes, 2021–2025",
           "scale": {
             "range": [
               "#F1F3F5",
@@ -138,13 +138,13 @@
         "values": [
           {
             "mode": "All injury crashes",
-            "day": "Thursday",
+            "day": "Wednesday",
             "hour": 8,
             "text": "Morning peak"
           },
           {
             "mode": "All injury crashes",
-            "day": "Wednesday",
+            "day": "Thursday",
             "hour": 16,
             "text": "Evening peak"
           }
@@ -163,7 +163,8 @@
         "baseline": "middle",
         "stroke": "#2A3B4C",
         "strokeWidth": 3,
-        "strokeOpacity": 0.55
+        "strokeOpacity": 0.55,
+        "strokeJoin": "round"
       },
       "encoding": {
         "text": {
@@ -176,13 +177,13 @@
         "values": [
           {
             "mode": "All injury crashes",
-            "day": "Thursday",
+            "day": "Wednesday",
             "hour": 8,
             "text": "Morning peak"
           },
           {
             "mode": "All injury crashes",
-            "day": "Wednesday",
+            "day": "Thursday",
             "hour": 16,
             "text": "Evening peak"
           }

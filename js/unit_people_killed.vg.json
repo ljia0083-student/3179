@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Unit chart. Each square is one person killed on Victorian roads in the selected year, grouped by road user type. Squares fill columns of ten.",
-  "width": 600,
+  "width": 585,
   "height": 210,
   "padding": {
     "top": 34,
     "bottom": 40,
     "left": 0,
-    "right": 0
+    "right": 40
   },
   "data": {
     "url": "data/people_killed.csv"
@@ -15,11 +15,11 @@
   "params": [
     {
       "name": "year",
-      "value": 2024,
+      "value": 2025,
       "bind": {
         "input": "range",
         "min": 2012,
-        "max": 2024,
+        "max": 2025,
         "step": 1,
         "name": "Year "
       }
@@ -100,7 +100,7 @@
           "scale": {
             "domain": [
               0.5,
-              37.5
+              38.5
             ]
           },
           "axis": null

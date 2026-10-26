@@ -1,507 +1,506 @@
 day,hour,severity,crashes
-Friday,0,Fatal,1
-Friday,0,Other injury,49
-Friday,0,Serious injury,40
+Friday,0,Fatal,2
+Friday,0,Other injury,60
+Friday,0,Serious injury,47
 Friday,1,Fatal,2
-Friday,1,Other injury,41
-Friday,1,Serious injury,39
-Friday,2,Other injury,47
-Friday,2,Serious injury,32
+Friday,1,Other injury,45
+Friday,1,Serious injury,46
+Friday,2,Fatal,1
+Friday,2,Other injury,50
+Friday,2,Serious injury,38
 Friday,3,Fatal,2
-Friday,3,Other injury,28
-Friday,3,Serious injury,27
-Friday,4,Fatal,1
-Friday,4,Other injury,38
-Friday,4,Serious injury,28
+Friday,3,Other injury,32
+Friday,3,Serious injury,33
+Friday,4,Fatal,2
+Friday,4,Other injury,32
+Friday,4,Serious injury,29
 Friday,5,Fatal,4
-Friday,5,Other injury,90
+Friday,5,Other injury,96
 Friday,5,Serious injury,59
 Friday,6,Fatal,10
-Friday,6,Other injury,246
-Friday,6,Serious injury,167
-Friday,7,Fatal,9
-Friday,7,Other injury,321
-Friday,7,Serious injury,146
-Friday,8,Fatal,8
-Friday,8,Other injury,459
-Friday,8,Serious injury,195
-Friday,9,Fatal,3
-Friday,9,Other injury,398
-Friday,9,Serious injury,170
-Friday,10,Fatal,3
-Friday,10,Other injury,361
-Friday,10,Serious injury,185
-Friday,11,Fatal,8
-Friday,11,Other injury,368
-Friday,11,Serious injury,167
-Friday,12,Fatal,10
-Friday,12,Other injury,439
-Friday,12,Serious injury,223
-Friday,13,Fatal,12
-Friday,13,Other injury,424
-Friday,13,Serious injury,188
+Friday,6,Other injury,242
+Friday,6,Serious injury,164
+Friday,7,Fatal,10
+Friday,7,Other injury,350
+Friday,7,Serious injury,163
+Friday,8,Fatal,10
+Friday,8,Other injury,502
+Friday,8,Serious injury,210
+Friday,9,Fatal,2
+Friday,9,Other injury,395
+Friday,9,Serious injury,162
+Friday,10,Fatal,8
+Friday,10,Other injury,374
+Friday,10,Serious injury,191
+Friday,11,Fatal,12
+Friday,11,Other injury,384
+Friday,11,Serious injury,194
+Friday,12,Fatal,11
+Friday,12,Other injury,449
+Friday,12,Serious injury,232
+Friday,13,Fatal,11
+Friday,13,Other injury,461
+Friday,13,Serious injury,198
 Friday,14,Fatal,10
-Friday,14,Other injury,491
-Friday,14,Serious injury,236
-Friday,15,Fatal,16
-Friday,15,Other injury,654
-Friday,15,Serious injury,307
-Friday,16,Fatal,9
-Friday,16,Other injury,626
-Friday,16,Serious injury,283
+Friday,14,Other injury,503
+Friday,14,Serious injury,248
+Friday,15,Fatal,13
+Friday,15,Other injury,675
+Friday,15,Serious injury,346
+Friday,16,Fatal,13
+Friday,16,Other injury,648
+Friday,16,Serious injury,289
 Friday,17,Fatal,14
-Friday,17,Other injury,634
-Friday,17,Serious injury,267
-Friday,18,Fatal,8
-Friday,18,Other injury,530
-Friday,18,Serious injury,239
-Friday,19,Fatal,11
-Friday,19,Other injury,317
-Friday,19,Serious injury,162
-Friday,20,Fatal,8
-Friday,20,Other injury,264
-Friday,20,Serious injury,123
-Friday,21,Fatal,9
-Friday,21,Other injury,218
-Friday,21,Serious injury,144
-Friday,22,Fatal,7
-Friday,22,Other injury,208
-Friday,22,Serious injury,109
-Friday,23,Fatal,4
-Friday,23,Other injury,156
-Friday,23,Serious injury,107
-Monday,0,Fatal,3
-Monday,0,Other injury,57
-Monday,0,Serious injury,25
+Friday,17,Other injury,660
+Friday,17,Serious injury,287
+Friday,18,Fatal,12
+Friday,18,Other injury,540
+Friday,18,Serious injury,268
+Friday,19,Fatal,10
+Friday,19,Other injury,328
+Friday,19,Serious injury,169
+Friday,20,Fatal,10
+Friday,20,Other injury,273
+Friday,20,Serious injury,131
+Friday,21,Fatal,8
+Friday,21,Other injury,241
+Friday,21,Serious injury,140
+Friday,22,Fatal,6
+Friday,22,Other injury,209
+Friday,22,Serious injury,116
+Friday,23,Fatal,7
+Friday,23,Other injury,165
+Friday,23,Serious injury,112
+Monday,0,Fatal,2
+Monday,0,Other injury,54
+Monday,0,Serious injury,32
 Monday,1,Fatal,1
-Monday,1,Other injury,44
-Monday,1,Serious injury,24
+Monday,1,Other injury,45
+Monday,1,Serious injury,23
 Monday,2,Fatal,3
-Monday,2,Other injury,27
+Monday,2,Other injury,28
 Monday,2,Serious injury,28
-Monday,3,Fatal,3
-Monday,3,Other injury,35
-Monday,3,Serious injury,23
+Monday,3,Fatal,2
+Monday,3,Other injury,37
+Monday,3,Serious injury,20
 Monday,4,Fatal,3
-Monday,4,Other injury,44
-Monday,4,Serious injury,27
-Monday,5,Fatal,5
-Monday,5,Other injury,115
-Monday,5,Serious injury,71
-Monday,6,Fatal,7
-Monday,6,Other injury,242
-Monday,6,Serious injury,143
-Monday,7,Fatal,4
-Monday,7,Other injury,318
-Monday,7,Serious injury,168
-Monday,8,Fatal,5
-Monday,8,Other injury,479
-Monday,8,Serious injury,210
-Monday,9,Fatal,6
-Monday,9,Other injury,342
-Monday,9,Serious injury,155
-Monday,10,Fatal,12
+Monday,4,Other injury,43
+Monday,4,Serious injury,23
+Monday,5,Fatal,7
+Monday,5,Other injury,106
+Monday,5,Serious injury,80
+Monday,6,Fatal,5
+Monday,6,Other injury,251
+Monday,6,Serious injury,155
+Monday,7,Fatal,6
+Monday,7,Other injury,338
+Monday,7,Serious injury,180
+Monday,8,Fatal,6
+Monday,8,Other injury,515
+Monday,8,Serious injury,214
+Monday,9,Fatal,5
+Monday,9,Other injury,366
+Monday,9,Serious injury,174
+Monday,10,Fatal,11
 Monday,10,Non-injury,1
-Monday,10,Other injury,311
-Monday,10,Serious injury,170
-Monday,11,Fatal,7
-Monday,11,Other injury,290
-Monday,11,Serious injury,148
-Monday,12,Fatal,10
-Monday,12,Other injury,372
-Monday,12,Serious injury,184
-Monday,13,Fatal,5
-Monday,13,Other injury,366
-Monday,13,Serious injury,189
+Monday,10,Other injury,329
+Monday,10,Serious injury,171
+Monday,11,Fatal,9
+Monday,11,Other injury,322
+Monday,11,Serious injury,154
+Monday,12,Fatal,8
+Monday,12,Other injury,401
+Monday,12,Serious injury,196
+Monday,13,Fatal,6
+Monday,13,Other injury,382
+Monday,13,Serious injury,195
 Monday,14,Fatal,9
-Monday,14,Other injury,429
-Monday,14,Serious injury,214
+Monday,14,Other injury,446
+Monday,14,Serious injury,230
 Monday,15,Fatal,15
-Monday,15,Other injury,612
-Monday,15,Serious injury,279
-Monday,16,Fatal,6
-Monday,16,Other injury,557
-Monday,16,Serious injury,242
-Monday,17,Fatal,7
-Monday,17,Other injury,572
-Monday,17,Serious injury,253
-Monday,18,Fatal,4
-Monday,18,Other injury,402
-Monday,18,Serious injury,180
-Monday,19,Fatal,8
-Monday,19,Other injury,244
-Monday,19,Serious injury,114
+Monday,15,Other injury,623
+Monday,15,Serious injury,293
+Monday,16,Fatal,7
+Monday,16,Other injury,578
+Monday,16,Serious injury,245
+Monday,17,Fatal,10
+Monday,17,Other injury,606
+Monday,17,Serious injury,252
+Monday,18,Fatal,5
+Monday,18,Other injury,443
+Monday,18,Serious injury,204
+Monday,19,Fatal,7
+Monday,19,Other injury,265
+Monday,19,Serious injury,116
 Monday,20,Fatal,8
-Monday,20,Other injury,164
-Monday,20,Serious injury,90
+Monday,20,Other injury,179
+Monday,20,Serious injury,107
 Monday,21,Fatal,3
-Monday,21,Other injury,157
-Monday,21,Serious injury,96
-Monday,22,Fatal,2
-Monday,22,Other injury,120
-Monday,22,Serious injury,62
+Monday,21,Other injury,172
+Monday,21,Serious injury,103
+Monday,22,Fatal,3
+Monday,22,Other injury,136
+Monday,22,Serious injury,77
 Monday,23,Fatal,2
-Monday,23,Other injury,73
-Monday,23,Serious injury,58
-Saturday,0,Fatal,7
-Saturday,0,Other injury,109
-Saturday,0,Serious injury,79
-Saturday,1,Fatal,8
-Saturday,1,Other injury,80
-Saturday,1,Serious injury,69
-Saturday,2,Fatal,8
-Saturday,2,Other injury,53
-Saturday,2,Serious injury,52
-Saturday,3,Fatal,4
-Saturday,3,Other injury,44
-Saturday,3,Serious injury,45
+Monday,23,Other injury,81
+Monday,23,Serious injury,59
+Saturday,0,Fatal,6
+Saturday,0,Other injury,117
+Saturday,0,Serious injury,88
+Saturday,1,Fatal,7
+Saturday,1,Other injury,89
+Saturday,1,Serious injury,71
+Saturday,2,Fatal,6
+Saturday,2,Other injury,56
+Saturday,2,Serious injury,57
+Saturday,3,Fatal,5
+Saturday,3,Other injury,46
+Saturday,3,Serious injury,44
 Saturday,4,Fatal,3
-Saturday,4,Other injury,51
-Saturday,4,Serious injury,32
-Saturday,5,Fatal,4
-Saturday,5,Other injury,59
-Saturday,5,Serious injury,52
+Saturday,4,Other injury,56
+Saturday,4,Serious injury,36
+Saturday,5,Fatal,5
+Saturday,5,Other injury,63
+Saturday,5,Serious injury,45
 Saturday,6,Fatal,9
-Saturday,6,Other injury,105
-Saturday,6,Serious injury,75
+Saturday,6,Other injury,107
+Saturday,6,Serious injury,78
 Saturday,7,Fatal,2
-Saturday,7,Other injury,129
-Saturday,7,Serious injury,93
-Saturday,8,Fatal,3
-Saturday,8,Other injury,200
-Saturday,8,Serious injury,104
-Saturday,9,Fatal,12
-Saturday,9,Other injury,318
-Saturday,9,Serious injury,146
+Saturday,7,Other injury,124
+Saturday,7,Serious injury,99
+Saturday,8,Fatal,4
+Saturday,8,Other injury,197
+Saturday,8,Serious injury,119
+Saturday,9,Fatal,10
+Saturday,9,Other injury,332
+Saturday,9,Serious injury,164
 Saturday,10,Fatal,8
-Saturday,10,Other injury,421
-Saturday,10,Serious injury,236
-Saturday,11,Fatal,12
-Saturday,11,Other injury,525
-Saturday,11,Serious injury,262
-Saturday,12,Fatal,11
-Saturday,12,Other injury,534
-Saturday,12,Serious injury,249
-Saturday,13,Fatal,14
-Saturday,13,Other injury,473
-Saturday,13,Serious injury,232
+Saturday,10,Other injury,432
+Saturday,10,Serious injury,257
+Saturday,11,Fatal,14
+Saturday,11,Other injury,538
+Saturday,11,Serious injury,286
+Saturday,12,Fatal,8
+Saturday,12,Other injury,583
+Saturday,12,Serious injury,268
+Saturday,13,Fatal,12
+Saturday,13,Other injury,530
+Saturday,13,Serious injury,247
 Saturday,14,Fatal,15
-Saturday,14,Other injury,482
-Saturday,14,Serious injury,240
+Saturday,14,Other injury,500
+Saturday,14,Serious injury,258
 Saturday,15,Fatal,9
-Saturday,15,Other injury,454
-Saturday,15,Serious injury,236
-Saturday,16,Fatal,14
-Saturday,16,Other injury,448
-Saturday,16,Serious injury,228
+Saturday,15,Other injury,473
+Saturday,15,Serious injury,253
+Saturday,16,Fatal,15
+Saturday,16,Other injury,435
+Saturday,16,Serious injury,246
 Saturday,17,Fatal,9
-Saturday,17,Other injury,364
+Saturday,17,Other injury,413
 Saturday,17,Serious injury,217
 Saturday,18,Fatal,7
-Saturday,18,Other injury,362
-Saturday,18,Serious injury,180
+Saturday,18,Other injury,381
+Saturday,18,Serious injury,204
 Saturday,19,Fatal,9
-Saturday,19,Other injury,304
-Saturday,19,Serious injury,138
-Saturday,20,Fatal,8
-Saturday,20,Other injury,207
-Saturday,20,Serious injury,139
-Saturday,21,Fatal,8
-Saturday,21,Other injury,241
-Saturday,21,Serious injury,123
-Saturday,22,Fatal,10
-Saturday,22,Other injury,204
-Saturday,22,Serious injury,127
+Saturday,19,Other injury,288
+Saturday,19,Serious injury,153
+Saturday,20,Fatal,10
+Saturday,20,Other injury,236
+Saturday,20,Serious injury,146
+Saturday,21,Fatal,7
+Saturday,21,Other injury,255
+Saturday,21,Serious injury,130
+Saturday,22,Fatal,9
+Saturday,22,Other injury,210
+Saturday,22,Serious injury,142
 Saturday,23,Fatal,11
-Saturday,23,Other injury,164
-Saturday,23,Serious injury,104
+Saturday,23,Other injury,186
+Saturday,23,Serious injury,117
 Sunday,0,Fatal,4
-Sunday,0,Other injury,123
-Sunday,0,Serious injury,97
-Sunday,1,Fatal,9
-Sunday,1,Other injury,104
-Sunday,1,Serious injury,81
-Sunday,2,Fatal,3
-Sunday,2,Other injury,65
-Sunday,2,Serious injury,58
-Sunday,3,Fatal,5
-Sunday,3,Other injury,74
-Sunday,3,Serious injury,60
+Sunday,0,Other injury,128
+Sunday,0,Serious injury,116
+Sunday,1,Fatal,10
+Sunday,1,Other injury,115
+Sunday,1,Serious injury,87
+Sunday,2,Fatal,5
+Sunday,2,Other injury,83
+Sunday,2,Serious injury,61
+Sunday,3,Fatal,7
+Sunday,3,Other injury,77
+Sunday,3,Serious injury,70
 Sunday,4,Fatal,3
 Sunday,4,Other injury,50
-Sunday,4,Serious injury,53
-Sunday,5,Fatal,2
-Sunday,5,Other injury,52
-Sunday,5,Serious injury,44
-Sunday,6,Fatal,3
-Sunday,6,Other injury,77
-Sunday,6,Serious injury,48
+Sunday,4,Serious injury,60
+Sunday,5,Fatal,3
+Sunday,5,Other injury,55
+Sunday,5,Serious injury,37
+Sunday,6,Fatal,5
+Sunday,6,Other injury,88
+Sunday,6,Serious injury,47
 Sunday,7,Fatal,6
 Sunday,7,Non-injury,1
-Sunday,7,Other injury,97
-Sunday,7,Serious injury,52
+Sunday,7,Other injury,103
+Sunday,7,Serious injury,66
 Sunday,8,Fatal,1
-Sunday,8,Other injury,147
-Sunday,8,Serious injury,93
-Sunday,9,Fatal,8
-Sunday,9,Other injury,214
-Sunday,9,Serious injury,121
-Sunday,10,Fatal,8
-Sunday,10,Other injury,311
-Sunday,10,Serious injury,199
+Sunday,8,Other injury,154
+Sunday,8,Serious injury,106
+Sunday,9,Fatal,14
+Sunday,9,Other injury,234
+Sunday,9,Serious injury,147
+Sunday,10,Fatal,11
+Sunday,10,Other injury,333
+Sunday,10,Serious injury,208
 Sunday,11,Fatal,15
-Sunday,11,Other injury,438
-Sunday,11,Serious injury,220
-Sunday,12,Fatal,11
-Sunday,12,Other injury,445
-Sunday,12,Serious injury,254
-Sunday,13,Fatal,9
-Sunday,13,Other injury,440
-Sunday,13,Serious injury,226
-Sunday,14,Fatal,14
-Sunday,14,Other injury,426
-Sunday,14,Serious injury,215
-Sunday,15,Fatal,9
-Sunday,15,Other injury,398
-Sunday,15,Serious injury,236
-Sunday,16,Fatal,17
-Sunday,16,Other injury,393
-Sunday,16,Serious injury,211
-Sunday,17,Fatal,6
-Sunday,17,Other injury,317
+Sunday,11,Other injury,448
+Sunday,11,Serious injury,244
+Sunday,12,Fatal,10
+Sunday,12,Other injury,468
+Sunday,12,Serious injury,264
+Sunday,13,Fatal,11
+Sunday,13,Other injury,471
+Sunday,13,Serious injury,236
+Sunday,14,Fatal,13
+Sunday,14,Other injury,452
+Sunday,14,Serious injury,250
+Sunday,15,Fatal,12
+Sunday,15,Other injury,415
+Sunday,15,Serious injury,245
+Sunday,16,Fatal,19
+Sunday,16,Other injury,421
+Sunday,16,Serious injury,236
+Sunday,17,Fatal,7
+Sunday,17,Other injury,345
 Sunday,17,Serious injury,201
-Sunday,18,Fatal,9
-Sunday,18,Other injury,317
-Sunday,18,Serious injury,180
-Sunday,19,Fatal,9
-Sunday,19,Other injury,220
-Sunday,19,Serious injury,151
+Sunday,18,Fatal,11
+Sunday,18,Other injury,329
+Sunday,18,Serious injury,190
+Sunday,19,Fatal,10
+Sunday,19,Other injury,238
+Sunday,19,Serious injury,155
 Sunday,20,Fatal,5
-Sunday,20,Other injury,194
-Sunday,20,Serious injury,112
+Sunday,20,Other injury,210
+Sunday,20,Serious injury,118
 Sunday,21,Fatal,5
-Sunday,21,Other injury,186
-Sunday,21,Serious injury,87
-Sunday,22,Fatal,4
+Sunday,21,Other injury,182
+Sunday,21,Serious injury,99
+Sunday,22,Fatal,6
 Sunday,22,Non-injury,1
-Sunday,22,Other injury,123
-Sunday,22,Serious injury,61
+Sunday,22,Other injury,125
+Sunday,22,Serious injury,60
 Sunday,23,Fatal,4
-Sunday,23,Other injury,84
-Sunday,23,Serious injury,59
+Sunday,23,Other injury,104
+Sunday,23,Serious injury,56
 Thursday,0,Fatal,5
-Thursday,0,Other injury,47
-Thursday,0,Serious injury,26
-Thursday,1,Fatal,2
-Thursday,1,Other injury,38
-Thursday,1,Serious injury,31
+Thursday,0,Other injury,55
+Thursday,0,Serious injury,30
+Thursday,1,Fatal,4
+Thursday,1,Other injury,33
+Thursday,1,Serious injury,40
 Thursday,2,Fatal,3
-Thursday,2,Other injury,28
-Thursday,2,Serious injury,28
-Thursday,3,Fatal,2
+Thursday,2,Other injury,26
+Thursday,2,Serious injury,24
+Thursday,3,Fatal,3
 Thursday,3,Other injury,39
-Thursday,3,Serious injury,24
+Thursday,3,Serious injury,23
 Thursday,4,Fatal,3
-Thursday,4,Other injury,36
-Thursday,4,Serious injury,29
-Thursday,5,Fatal,8
-Thursday,5,Other injury,92
-Thursday,5,Serious injury,53
-Thursday,6,Fatal,3
-Thursday,6,Other injury,270
-Thursday,6,Serious injury,150
-Thursday,7,Fatal,8
-Thursday,7,Other injury,372
-Thursday,7,Serious injury,157
-Thursday,8,Fatal,16
-Thursday,8,Other injury,546
-Thursday,8,Serious injury,204
+Thursday,4,Other injury,42
+Thursday,4,Serious injury,27
+Thursday,5,Fatal,7
+Thursday,5,Other injury,95
+Thursday,5,Serious injury,67
+Thursday,6,Fatal,4
+Thursday,6,Other injury,264
+Thursday,6,Serious injury,163
+Thursday,7,Fatal,9
+Thursday,7,Other injury,370
+Thursday,7,Serious injury,167
+Thursday,8,Fatal,13
+Thursday,8,Other injury,567
+Thursday,8,Serious injury,231
 Thursday,9,Fatal,10
-Thursday,9,Other injury,407
-Thursday,9,Serious injury,150
-Thursday,10,Fatal,8
-Thursday,10,Other injury,360
-Thursday,10,Serious injury,147
-Thursday,11,Fatal,8
-Thursday,11,Other injury,368
-Thursday,11,Serious injury,192
-Thursday,12,Fatal,8
-Thursday,12,Other injury,371
-Thursday,12,Serious injury,209
-Thursday,13,Fatal,9
-Thursday,13,Other injury,356
-Thursday,13,Serious injury,210
-Thursday,14,Fatal,11
-Thursday,14,Other injury,424
-Thursday,14,Serious injury,218
-Thursday,15,Fatal,15
-Thursday,15,Other injury,630
-Thursday,15,Serious injury,285
-Thursday,16,Fatal,14
-Thursday,16,Other injury,686
-Thursday,16,Serious injury,293
-Thursday,17,Fatal,11
-Thursday,17,Other injury,669
-Thursday,17,Serious injury,290
-Thursday,18,Fatal,10
-Thursday,18,Other injury,476
-Thursday,18,Serious injury,221
-Thursday,19,Fatal,8
-Thursday,19,Other injury,262
-Thursday,19,Serious injury,146
-Thursday,20,Fatal,5
-Thursday,20,Other injury,224
-Thursday,20,Serious injury,114
+Thursday,9,Other injury,428
+Thursday,9,Serious injury,165
+Thursday,10,Fatal,6
+Thursday,10,Other injury,353
+Thursday,10,Serious injury,148
+Thursday,11,Fatal,10
+Thursday,11,Other injury,360
+Thursday,11,Serious injury,210
+Thursday,12,Fatal,13
+Thursday,12,Other injury,406
+Thursday,12,Serious injury,197
+Thursday,13,Fatal,7
+Thursday,13,Other injury,384
+Thursday,13,Serious injury,204
+Thursday,14,Fatal,13
+Thursday,14,Other injury,426
+Thursday,14,Serious injury,226
+Thursday,15,Fatal,17
+Thursday,15,Other injury,635
+Thursday,15,Serious injury,315
+Thursday,16,Fatal,15
+Thursday,16,Other injury,724
+Thursday,16,Serious injury,307
+Thursday,17,Fatal,9
+Thursday,17,Other injury,723
+Thursday,17,Serious injury,310
+Thursday,18,Fatal,13
+Thursday,18,Other injury,523
+Thursday,18,Serious injury,236
+Thursday,19,Fatal,11
+Thursday,19,Other injury,293
+Thursday,19,Serious injury,153
+Thursday,20,Fatal,7
+Thursday,20,Other injury,233
+Thursday,20,Serious injury,126
 Thursday,21,Fatal,7
-Thursday,21,Other injury,182
-Thursday,21,Serious injury,106
+Thursday,21,Other injury,190
+Thursday,21,Serious injury,113
 Thursday,22,Fatal,4
-Thursday,22,Other injury,159
-Thursday,22,Serious injury,80
+Thursday,22,Other injury,173
+Thursday,22,Serious injury,88
 Thursday,23,Fatal,4
-Thursday,23,Other injury,118
-Thursday,23,Serious injury,65
-Tuesday,0,Fatal,5
-Tuesday,0,Other injury,40
-Tuesday,0,Serious injury,33
+Thursday,23,Other injury,127
+Thursday,23,Serious injury,62
+Tuesday,0,Fatal,6
+Tuesday,0,Other injury,43
+Tuesday,0,Serious injury,29
 Tuesday,1,Fatal,4
-Tuesday,1,Other injury,36
-Tuesday,1,Serious injury,21
+Tuesday,1,Other injury,33
+Tuesday,1,Serious injury,28
 Tuesday,2,Fatal,3
-Tuesday,2,Other injury,23
-Tuesday,2,Serious injury,20
-Tuesday,3,Fatal,3
-Tuesday,3,Other injury,38
-Tuesday,3,Serious injury,18
-Tuesday,4,Fatal,4
-Tuesday,4,Other injury,30
+Tuesday,2,Other injury,21
+Tuesday,2,Serious injury,21
+Tuesday,3,Fatal,2
+Tuesday,3,Other injury,26
+Tuesday,3,Serious injury,21
+Tuesday,4,Fatal,1
+Tuesday,4,Other injury,32
 Tuesday,4,Serious injury,21
 Tuesday,5,Fatal,9
 Tuesday,5,Other injury,113
-Tuesday,5,Serious injury,71
-Tuesday,6,Fatal,9
-Tuesday,6,Other injury,314
-Tuesday,6,Serious injury,132
-Tuesday,7,Fatal,12
-Tuesday,7,Other injury,366
-Tuesday,7,Serious injury,166
-Tuesday,8,Fatal,8
-Tuesday,8,Other injury,549
-Tuesday,8,Serious injury,208
-Tuesday,9,Fatal,5
-Tuesday,9,Other injury,382
-Tuesday,9,Serious injury,162
-Tuesday,10,Fatal,14
-Tuesday,10,Other injury,317
-Tuesday,10,Serious injury,159
-Tuesday,11,Fatal,4
-Tuesday,11,Other injury,328
-Tuesday,11,Serious injury,158
+Tuesday,5,Serious injury,77
+Tuesday,6,Fatal,10
+Tuesday,6,Other injury,337
+Tuesday,6,Serious injury,145
+Tuesday,7,Fatal,13
+Tuesday,7,Other injury,394
+Tuesday,7,Serious injury,191
+Tuesday,8,Fatal,7
+Tuesday,8,Other injury,630
+Tuesday,8,Serious injury,227
+Tuesday,9,Fatal,8
+Tuesday,9,Other injury,395
+Tuesday,9,Serious injury,184
+Tuesday,10,Fatal,13
+Tuesday,10,Other injury,313
+Tuesday,10,Serious injury,175
+Tuesday,11,Fatal,3
+Tuesday,11,Other injury,343
+Tuesday,11,Serious injury,165
 Tuesday,12,Fatal,13
-Tuesday,12,Other injury,369
-Tuesday,12,Serious injury,180
-Tuesday,13,Fatal,9
-Tuesday,13,Other injury,385
-Tuesday,13,Serious injury,175
-Tuesday,14,Fatal,8
-Tuesday,14,Other injury,449
-Tuesday,14,Serious injury,205
-Tuesday,15,Fatal,4
-Tuesday,15,Other injury,612
-Tuesday,15,Serious injury,292
+Tuesday,12,Other injury,361
+Tuesday,12,Serious injury,187
+Tuesday,13,Fatal,11
+Tuesday,13,Other injury,400
+Tuesday,13,Serious injury,192
+Tuesday,14,Fatal,9
+Tuesday,14,Other injury,424
+Tuesday,14,Serious injury,234
+Tuesday,15,Fatal,8
+Tuesday,15,Other injury,659
+Tuesday,15,Serious injury,300
 Tuesday,16,Fatal,7
-Tuesday,16,Other injury,656
-Tuesday,16,Serious injury,264
-Tuesday,17,Fatal,10
-Tuesday,17,Other injury,656
-Tuesday,17,Serious injury,265
+Tuesday,16,Other injury,704
+Tuesday,16,Serious injury,280
+Tuesday,17,Fatal,6
+Tuesday,17,Other injury,697
+Tuesday,17,Serious injury,278
 Tuesday,18,Fatal,11
-Tuesday,18,Other injury,503
-Tuesday,18,Serious injury,198
-Tuesday,19,Fatal,7
-Tuesday,19,Other injury,256
-Tuesday,19,Serious injury,133
+Tuesday,18,Other injury,533
+Tuesday,18,Serious injury,235
+Tuesday,19,Fatal,8
+Tuesday,19,Other injury,293
+Tuesday,19,Serious injury,142
 Tuesday,20,Fatal,6
-Tuesday,20,Other injury,193
-Tuesday,20,Serious injury,107
+Tuesday,20,Other injury,214
+Tuesday,20,Serious injury,105
 Tuesday,21,Fatal,3
-Tuesday,21,Other injury,179
-Tuesday,21,Serious injury,94
-Tuesday,22,Fatal,3
-Tuesday,22,Other injury,137
-Tuesday,22,Serious injury,81
+Tuesday,21,Other injury,196
+Tuesday,21,Serious injury,101
+Tuesday,22,Other injury,151
+Tuesday,22,Serious injury,98
 Tuesday,23,Fatal,2
-Tuesday,23,Other injury,81
-Tuesday,23,Serious injury,58
-Wednesday,0,Fatal,9
-Wednesday,0,Other injury,47
+Tuesday,23,Other injury,84
+Tuesday,23,Serious injury,59
+Wednesday,0,Fatal,6
+Wednesday,0,Other injury,55
 Wednesday,0,Serious injury,45
-Wednesday,1,Fatal,5
-Wednesday,1,Other injury,39
-Wednesday,1,Serious injury,35
-Wednesday,2,Fatal,1
-Wednesday,2,Other injury,35
-Wednesday,2,Serious injury,20
-Wednesday,3,Fatal,3
-Wednesday,3,Other injury,21
-Wednesday,3,Serious injury,22
-Wednesday,4,Fatal,1
-Wednesday,4,Other injury,46
-Wednesday,4,Serious injury,28
-Wednesday,5,Fatal,2
-Wednesday,5,Other injury,115
+Wednesday,1,Fatal,4
+Wednesday,1,Other injury,45
+Wednesday,1,Serious injury,28
+Wednesday,2,Other injury,33
+Wednesday,2,Serious injury,26
+Wednesday,3,Fatal,4
+Wednesday,3,Other injury,26
+Wednesday,3,Serious injury,19
+Wednesday,4,Fatal,2
+Wednesday,4,Other injury,48
+Wednesday,4,Serious injury,38
+Wednesday,5,Fatal,1
+Wednesday,5,Other injury,108
 Wednesday,5,Serious injury,64
 Wednesday,6,Fatal,8
-Wednesday,6,Other injury,276
-Wednesday,6,Serious injury,171
+Wednesday,6,Other injury,277
+Wednesday,6,Serious injury,187
 Wednesday,7,Fatal,5
-Wednesday,7,Other injury,358
-Wednesday,7,Serious injury,170
+Wednesday,7,Other injury,380
+Wednesday,7,Serious injury,185
 Wednesday,8,Fatal,4
-Wednesday,8,Other injury,578
-Wednesday,8,Serious injury,228
-Wednesday,9,Fatal,7
-Wednesday,9,Other injury,387
-Wednesday,9,Serious injury,140
+Wednesday,8,Other injury,641
+Wednesday,8,Serious injury,246
+Wednesday,9,Fatal,8
+Wednesday,9,Other injury,419
+Wednesday,9,Serious injury,167
 Wednesday,10,Fatal,4
-Wednesday,10,Other injury,350
-Wednesday,10,Serious injury,163
-Wednesday,11,Fatal,6
-Wednesday,11,Other injury,317
-Wednesday,11,Serious injury,181
-Wednesday,12,Fatal,7
-Wednesday,12,Other injury,393
-Wednesday,12,Serious injury,192
-Wednesday,13,Fatal,10
-Wednesday,13,Other injury,394
+Wednesday,10,Other injury,362
+Wednesday,10,Serious injury,175
+Wednesday,11,Fatal,10
+Wednesday,11,Other injury,338
+Wednesday,11,Serious injury,185
+Wednesday,12,Fatal,11
+Wednesday,12,Other injury,411
+Wednesday,12,Serious injury,194
+Wednesday,13,Fatal,11
+Wednesday,13,Other injury,399
 Wednesday,13,Serious injury,185
-Wednesday,14,Fatal,6
-Wednesday,14,Other injury,466
-Wednesday,14,Serious injury,217
-Wednesday,15,Fatal,15
-Wednesday,15,Other injury,633
-Wednesday,15,Serious injury,296
-Wednesday,16,Fatal,17
-Wednesday,16,Other injury,669
-Wednesday,16,Serious injury,272
+Wednesday,14,Fatal,9
+Wednesday,14,Other injury,461
+Wednesday,14,Serious injury,234
+Wednesday,15,Fatal,13
+Wednesday,15,Other injury,698
+Wednesday,15,Serious injury,294
+Wednesday,16,Fatal,18
+Wednesday,16,Other injury,694
+Wednesday,16,Serious injury,295
 Wednesday,17,Fatal,8
-Wednesday,17,Other injury,693
-Wednesday,17,Serious injury,252
-Wednesday,18,Fatal,9
-Wednesday,18,Other injury,489
-Wednesday,18,Serious injury,217
+Wednesday,17,Other injury,712
+Wednesday,17,Serious injury,271
+Wednesday,18,Fatal,10
+Wednesday,18,Other injury,525
+Wednesday,18,Serious injury,251
 Wednesday,19,Fatal,6
-Wednesday,19,Other injury,286
-Wednesday,19,Serious injury,134
+Wednesday,19,Other injury,294
+Wednesday,19,Serious injury,162
 Wednesday,20,Fatal,5
-Wednesday,20,Other injury,204
-Wednesday,20,Serious injury,114
+Wednesday,20,Other injury,219
+Wednesday,20,Serious injury,124
 Wednesday,21,Fatal,7
-Wednesday,21,Other injury,193
-Wednesday,21,Serious injury,95
-Wednesday,22,Fatal,7
-Wednesday,22,Other injury,132
-Wednesday,22,Serious injury,84
+Wednesday,21,Other injury,189
+Wednesday,21,Serious injury,115
+Wednesday,22,Fatal,5
+Wednesday,22,Other injury,146
+Wednesday,22,Serious injury,87
 Wednesday,23,Fatal,4
-Wednesday,23,Other injury,95
-Wednesday,23,Serious injury,55
+Wednesday,23,Other injury,102
+Wednesday,23,Serious injury,54

@@ -6,7 +6,7 @@
     "type": "fit-x",
     "contains": "padding"
   },
-  "height": 286,
+  "height": 306,
   "data": {
     "url": "data/monthly_crashes.csv"
   },

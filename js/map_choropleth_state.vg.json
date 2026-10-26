@@ -49,13 +49,13 @@
         },
         "key": "lgaCode",
         "fields": [
-          "population_2021",
+          "population",
           "metro"
         ]
       }
     },
     {
-      "calculate": "isValid(datum.population_2021) ? datum.ksi_crashes / 5 / datum.population_2021 * 100000 : null",
+      "calculate": "isValid(datum.population) ? datum.ksi_crashes / 5 / datum.population * 100000 : null",
       "as": "rate"
     },
     {
@@ -162,8 +162,8 @@
             "format": ","
           },
           {
-            "field": "population_2021",
-            "title": "Residents (2021)",
+            "field": "population",
+            "title": "Residents (2025 estimate)",
             "format": ","
           }
         ]
@@ -173,9 +173,9 @@
       "data": {
         "values": [
           {
-            "council": "Strathbogie",
-            "lx": 144.75,
-            "ly": -35.2,
+            "council": "Colac Otway",
+            "lx": 142.1,
+            "ly": -38.62,
             "align": "center"
           },
           {
@@ -228,12 +228,12 @@
             },
             "key": "lgaCode",
             "fields": [
-              "population_2021"
+              "population"
             ]
           }
         },
         {
-          "calculate": "datum.ksi_crashes / 5 / datum.population_2021 * 100000",
+          "calculate": "datum.ksi_crashes / 5 / datum.population * 100000",
           "as": "rate"
         },
         {

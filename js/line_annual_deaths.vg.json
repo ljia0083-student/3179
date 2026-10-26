@@ -13,7 +13,7 @@
       "title": null,
       "axis": {
         "labelAngle": 0,
-        "labelExpr": "datum.value % 2 == 0 ? datum.value : ''",
+        "labelExpr": "datum.value % 2 == 0 || datum.value == 2025 ? datum.value : ''",
         "ticks": false,
         "domain": false
       }
@@ -102,7 +102,7 @@
     {
       "transform": [
         {
-          "filter": "datum.year == 2024"
+          "filter": "datum.year == 2025"
         },
         {
           "calculate": "datum.region == 'Metropolitan Melbourne' ? 'Melbourne' : 'Regional'",

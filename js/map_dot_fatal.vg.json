@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Dot map. One dot for every fatal crash in the five most recent full years, placed where it happened and coloured by the posted speed limit (light orange = 50 km/h or less, dark red = 100 to 110 km/h). Click the legend to isolate one speed band.",
+  "description": "Dot map. One dot for every fatal crash with a recorded speed limit and location in the five most recent full years, placed where it happened and coloured by the posted speed limit (light orange = 50 km/h or less, dark red = 100 to 110 km/h). Click the legend to isolate one speed band.",
   "width": "container",
   "autosize": {
     "type": "fit-x",
